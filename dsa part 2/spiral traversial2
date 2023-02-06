@@ -1,0 +1,49 @@
+function spiralTraversal(N, M, arr){
+//write code here
+var top = 0;
+var bottom = N - 1;
+var left = 0;
+var right = M - 1;
+var count =0;
+var bag="";
+while(count<N*M)
+{
+if(count<N*M)
+{
+for(var i = top;i<=bottom;i++)
+{
+bag= bag+(arr[i][left])+" ";
+count++;
+}
+}
+left++;
+if(count<N*M)
+{
+for(var i = left;i<=right;i++)
+{
+bag = bag+(arr[bottom][i])+" ";
+count++;
+}
+}
+bottom-- ;
+if(count<N*M)
+{
+for (var i = bottom;i>= top;i--)
+{
+bag= bag+(arr[i][right])+" ";
+count++;
+}
+}
+right--;
+if(count<N*M)
+{
+for ( var i = right;i>= left;i--)
+{
+bag = bag+(arr[top][i])+" ";
+count++;
+}
+}
+top++;
+}
+console.log(bag);
+}
