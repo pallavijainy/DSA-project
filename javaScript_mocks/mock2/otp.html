@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/otp.css" />
+  </head>
+  <body>
+    <div class="main">
+
+        <h1>Enter OTP</h1>
+    </div>
+    <div class="container">
+        <div class="otp-container" >
+          <input class="otp-input" type="number" min="0" max="9" maxlength="1" />
+          <input class="otp-input" type="number" min="0" max="9" maxlength="1" />
+          <input class="otp-input" type="number" min="0" max="9" maxlength="1" />
+          <input class="otp-input" type="number" min="0" max="9" maxlength="1" />
+        </div>
+        <button class="submit-btn" onclick='submitOTP()'>Submit</button>
+      </div>
+      
+  <script>
+    const inputs = document.querySelectorAll(".otp-input");
+
+    // move focus to next input box on input
+    inputs.forEach((input, index) => {
+      input.addEventListener("input", (event) => {
+        if (index < inputs.length - 1 && event.data !== null) {
+          inputs[index + 1].focus();
+        }
+      });
+    });
+
+    // submit function
+    function submitOTP() {
+      const otp = Array.from(inputs)
+        .map((input) => input.value)
+        .join("");
+      if (otp === "1234") {
+        alert("Success");
+        window.location="./index.html"
+      } else {
+        alert("Invalid OTP");
+      }
+    }
+  </script>
+</html>

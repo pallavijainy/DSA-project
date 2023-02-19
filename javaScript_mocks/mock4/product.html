@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Page</title>
+    <link rel="stylesheet" href="./css/product_page.css" />
+  </head>
+  <body>
+    <div>
+      <select id="category-filter" onchange="filterProductsByCategory()">
+        <option value="">All Categories</option>
+        <option value="kids">Kids</option>
+        <option value="women">Women</option>
+        <option value="homedecor">Home Decor</option>
+        <!-- add more options for other categories if needed -->
+      </select>
+      <button id="sort-high-to-low" onclick="sortProducts('asc')">
+        Sort by Price (High to Low)
+      </button>
+      <button id="sort-low-to-high" onclick="sortProducts('desc')">
+        Sort by Price (Low to High)
+      </button>
+    </div>
+
+    <div id="product-container"></div>
+  </body>
+</html>
+<script src="./product.js"></script>
