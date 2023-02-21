@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Ads</title>
+    <link rel="stylesheet" href="css/cars.css" />
+  </head>
+  <body>
+    <!-- Section to display the sort and filter options -->
+    <div class="sort-filter-container">
+      <label for="sort-select">Sort by:</label>
+      <select id="sort-select">
+        <option value="price">Price</option>
+        <option value="kms">Kms driven</option>
+      </select>
+      <label for="filter-select">Filter by brand:</label>
+      <select id="filter-select">
+        <option value="all">All</option>
+        <option value="Tata">Tata</option>
+        <option value="Mercedes">Mercedes</option>
+        <option value="Toyota">Toyota</option>
+        <option value="Honda">Honda</option>
+      </select>
+    </div>
+
+    <!-- Section to display the car ads -->
+    <div class="card-container" id="card-container"></div>
+
+    <!-- Section to display the edit ad modal window -->
+    <div class="modal-container" id="modal-container"></div>
+
+    <!-- Section to store the ad data -->
+    <div id="ads-container"></div>
+
+    <!-- JavaScript code to manipulate the page -->
+    <script src="cars.js"></script>
+  </body>
+</html>

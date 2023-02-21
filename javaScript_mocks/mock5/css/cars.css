@@ -1,0 +1,147 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 200px;
+  }
+  
+  .card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 16px;
+  }
+  
+  .card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+  
+  .card p {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  
+  .card i {
+    font-size: 1.2rem;
+    margin-right: 8px;
+    cursor: pointer;
+  }
+  
+  .sort-filter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .sort-filter label {
+    margin-right: 8px;
+  }
+  
+  .sort-filter select {
+    padding: 8px;
+    font-size: 1rem;
+  }
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+  
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 400px;
+  }
+  
+  .modal-content label {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+  
+  .modal-content input {
+    padding: 8px;
+    font-size: 1rem;
+    margin-bottom: 16px;
+  }
+  
+  .modal-content button {
+    padding: 8px 16px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .modal-content button:hover {
+    background-color: #0069d9;
+  }
+  .sort-filter-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-right: 0.5rem;
+  }
+  
+  select {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    border: none;
+    background-color: #0077ff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  button:hover {
+    background-color: #0055cc;
+  }
+  
+  .delete-button {
+    background-color: #ff0000;
+  }
+  
+  .delete-button:hover {
+    background-color: #cc0000;
+  }
+  
+  .edit-button {
+    background-color: #00cc00;
+  }
+  
+  .edit-button:hover {
+    background-color: #009900;
+  }
+    

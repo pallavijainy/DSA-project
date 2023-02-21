@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ad Page</title>
+    <link rel="stylesheet" href="./css/Ad.css" />
+  </head>
+  <body>
+    <div class="form-container">
+      <h1>Post Your Car Ad</h1>
+      <form id="car-ad-form">
+        <label for="brand">Brand:</label>
+        <select id="brand" name="brand">
+          <option value="Toyota">Toyota</option>
+          <option value="Honda">Honda</option>
+          <option value="Nissan">Nissan</option>
+          <option value="Ford">Ford</option></select
+        ><br /><br />
+
+        <label for="transmission">Transmission:</label>
+        <select id="transmission" name="transmission">
+          <option value="Manual">Manual</option>
+          <option value="Automated">Automated</option></select
+        ><br /><br />
+
+        <label for="year">Year:</label>
+        <select id="year" name="year">
+          <option value="2022">2022</option>
+          <option value="2021">2021</option>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+          <option value="2018">2018</option>
+          <option value="2017">2017</option>
+          <option value="2016">2016</option>
+          <option value="2015">2015</option>
+          <option value="2014">2014</option>
+          <option value="2013">2013</option>
+          <option value="2012">2012</option>
+          <option value="2011">2011</option>
+          <option value="2010">2010</option>
+          <option value="2009">2009</option>
+          <option value="2008">2008</option>
+          <option value="2007">2007</option>
+          <option value="2006">2006</option>
+          <option value="2005">2005</option>
+          <option value="2004">2004</option>
+          <option value="2003">2003</option></select
+        ><br /><br />
+
+        <label for="km">KM Driven:</label>
+        <input type="number" id="km" name="km" /><br /><br />
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4"></textarea
+        ><br /><br />
+
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" /><br /><br />
+        <label for="image-url">Image URL:</label>
+        <input
+          type="text"
+          id="image-url"
+          name="image-url"
+          placeholder="cars-ad-image-url"
+          class="image-input"
+        />
+        <input type="submit" value="Post Ad" />
+      </form>
+    </div>
+    <script src="Ad.js"></script>
+  </body>
+</html>
