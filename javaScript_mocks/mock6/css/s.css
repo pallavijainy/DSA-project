@@ -1,0 +1,149 @@
+/* Reset the styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Style the form container */
+  .form-container {
+    width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Style the form header */
+  .form-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Style the form fields */
+  .form-field {
+    margin-bottom: 10px;
+  }
+  
+  /* Style the label for form fields */
+  .form-field label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  /* Style the input field */
+  .form-field input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Style the password mismatch error */
+  #error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    display: none;
+  }
+  
+  /* Style the form buttons */
+  .form-buttons {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  /* Style the submit button */
+  .form-buttons button {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Style the reset button */
+  .form-buttons button[type="reset"] {
+    margin-left: 10px;
+    background-color: #ccc;
+    color: #fff;
+  }
+  
+  /* Style the success message */
+  .success-message {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  /* Style the error message */
+  .error-message {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 10px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  /* Style the modal overlay */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    display: none;
+  }
+  
+  /* Style the modal dialog */
+  .modal-dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    width: 400px;
+    display: none;
+  }
+  
+  /* Style the modal header */
+  .modal-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Style the modal content */
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Style the modal input fields */
+  .modal-field {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  /* Style the modal label for input fields */
+  .modal-field label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom
+  }

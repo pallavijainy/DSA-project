@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+  </head>
+  <body>
+    <div>
+      <label for="startDate">Start Date:</label>
+      <input type="date" id="startDate" />
+    </div>
+
+    <div>
+      <label for="endDate">End Date:</label>
+      <input type="date" id="endDate" />
+    </div>
+
+    <button onclick="getGames()">Get Games</button>
+
+    <div id="gamesContainer"></div>
+    <div id="paginationContainer"></div>
+  </body>
+  <script src="index.js"></script>
+</html>

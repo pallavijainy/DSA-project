@@ -1,0 +1,67 @@
+# Masai Task Manager
+
+### `Instructions`
+
+- Read entire question carefully for at-least 15 mins, understand it and then code it.
+- Don’t jump directly into code.
+- Commit your code every hour with proper commit message to your repository (we will monitor every commit)
+- Use HTML, CSS and React to solve this question.
+- Use Redux to dispatch Asynchronous actions(optional)
+- Use pure CSS (module.css), dont use any external libraries for UI.
+
+# Problem Statement
+
+- Your task is to build an application where user can add daily tasks.
+- User should be able to signup and login into application.
+- Signup page should take following fields, and UI should be similar.
+- Password and confirm password error states should be shown if password doesn’t match.
+    
+    ![Screenshot 2023-01-06 at 3.07.43 PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6557841c-5e1e-471f-8ccc-dfb3574568e5/Screenshot_2023-01-06_at_3.07.43_PM.png)
+    
+- Login page should take following fields, and UI should be similar
+    
+    ![Screenshot 2023-01-06 at 3.12.14 PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a2f8e200-c775-49c3-83e4-506cd4de5c47/Screenshot_2023-01-06_at_3.12.14_PM.png)
+    
+- Store all user signup information in JSON server.
+- Only registered users should be able to login to the application.
+- Proper error messages should be displayed if user is trying to login without registering.
+- Once user logs in, redirect him to tasks page where user should be able to add tasks.
+- UI should look like -
+    
+    ![Screenshot 2023-01-06 at 3.28.33 PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/60063054-72b5-449d-a606-6c521f35cf08/Screenshot_2023-01-06_at_3.28.33_PM.png)
+    
+- User should be able to add tasks and store them in the JSON server.
+- When user has successfully added a new task , display it on browser.
+- User should not be able to add more than 5 tasks for the day. If user tries to add more than 5 tasks, display an error with message - “Daily limit exceeded”.
+- Following fields should be dynamic
+    - Username
+    - Date
+    - Total no of tasks
+    - Tasks for the day
+- User should be able to logout from the dashboard.
+- User should also able to delete a particular task, so keep a delete icon for each task. Correspondingly Data should be updated on JSON server
+- Note that, your application should be multi user application, each user should have their corresponding different tasks displayed
+- Data should be retreived even if user logs out and login to his account.
+- Use JSON server to store all users signup data and their corresponding task list.
+
+Note: If above images are not loading, refer to this link - [Link](https://drive.google.com/drive/folders/1KdQOIYY6U8CGXMLMa8Q3htXBz6YVlBMs?usp=sharing)
+
+## Submission
+
+- Please submit deployed link and Github link of code.
+- **Push your code into `masai-repo`, don’t submit personal repo links (submitting personal repo links will lead to disqualification)**
+- Please double check if deployed version works or not (run deployed version on your laptop and then submit it).
+- Any issues in deployed link, will be considered null and void.
+- Please verify if your submissions are correct.
+- Make sure you follow all instructions carefully.
+- Submit before deadline.
+
+### Rubrics / Criteria to be judged upon
+
+- HTML, CSS, React
+- Fetch, Promises
+- JSON server
+- Decent UI
+- Code cleanliness and component structure
+
+## Rubrics
