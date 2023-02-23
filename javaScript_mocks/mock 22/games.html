@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .main {
+        display: flex;
+        justify-content: space-between;
+      }
+      .home {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <ul class="navlist">
+        <li><a href="./index.html">players page</a></li>
+        <li><a href="./games.html">games page</a></li>
+      </ul>
+    </nav>
+
+    <div class="gamesContainer">
+      <input type="date" id="start" />
+      <input type="date" id="end" />
+    </div>
+
+    <div class="main" id="main">
+      <div class="home"></div>
+      <div class="visitor"></div>
+    </div>
+
+    <div class="pagination">
+      <button class="prev">prev</button>
+      <button class="currentpage"></button>
+      <button class="next">next</button>
+    </div>
+  </body>
+</html>
+<script src="games.js"></script>
