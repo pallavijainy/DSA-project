@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <style>
+      /* All Your css for Home page goes here  */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      #menu-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 20px;
+      }
+      .container {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+      }
+      .container img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="nav">
+      <h1>Web Coffee Shop Menu</h1>
+      <a href="./index.html">Home</a>
+      <a href="./order.html">Ordered</a>
+    </div>
+    <div id="filter">
+      <input type="number" id="lower" />
+      <input type="number" id="upper" />
+      <button id="filter-btn">Filter</button>
+    </div>
+    <select id="sort" onchange="sort()">
+      <option value="">Sort By Price</option>
+      <option value="asc">Ascending</option>
+      <option value="desc">Descending</option>
+    </select>
+    <h1 id="alert"></h1>
+    <div id="menu-container">
+      <!-- Here Append All the Items  -->
+    </div>
+  </body>
+  <script>
+    // All your JS code for Home Page goes here
+    const menuContainer = document.querySelector("#menu-container");
+    const url = ``;
+    const display = () => {
+      fetch(
+        `https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-coffee`
+      )
+        .then((res) => res.json())
+        .then((res) =>
+          res.data.forEach((el) => {
+            // console.log(el);
+            let container = document.createElement("div");
+            container.classList.add("container");
+            let img = document.createElement("img");
+            img.src = el.image;
+            let desdiv = document.createElement("div");
+            desdiv.classList.add("desdiv");
+            const content = document.createElement("div");
+            container.classList.add("content");
+            let title = document.createElement("h3");
+            title.innerText = el.title;
+            let description = document.createElement("p");
+            description.innertext = el.description;
+            let price = document.createElement("h2");
+            price.innerText = el.price;
+            let ingredients = document.createElement("p");
+            ingredients.innerText = el.ingredients[0];
+            let button = document.createElement("button");
+            button.innerText = "Buy";
+            let arr = JSON.parse(localStorage.getItem("buy")) || [];
+            button.addEventListener("click", () => {
+              let found = arr.filter((e) => e.id == el.id);
+              if (found.length === 0) {
+                arr.push(el);
+                localStorage.setItem("buy", JSON.stringify(arr));
+                alert("your order placed sucessfully");
+              } else {
+                alert("already in cart");
+              }
+            });
+            desdiv.appendChild(img);
+            content.appendChild(title);
+            content.appendChild(price);
+            content.appendChild(description);
+            content.appendChild(ingredients);
+            content.appendChild(button);
+            container.appendChild(desdiv);
+            container.appendChild(content);
+            menuContainer.appendChild(container);
+          })
+        )
+        .catch((err) => console.log(err));
+    };
+    display();
+    const sort = () => {
+      let sortyby = document.querySelector("#sort").value;
+      console.log(sortyby);
+      fetch(
+        `https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-coffee?sort=price&order=${sortyby}`
+      )
+        .then((res) => res.json())
+        .then((res) => {
+          menuContainer.innerHTML = "";
+
+          res.data.forEach((el) => {
+            let container = document.createElement("div");
+            container.classList.add("container");
+            let img = document.createElement("img");
+            img.src = el.image;
+            let desdiv = document.createElement("div");
+            desdiv.classList.add("desdiv");
+            const content = document.createElement("div");
+            container.classList.add("content");
+            let title = document.createElement("h3");
+            title.innerText = el.title;
+            let description = document.createElement("p");
+            description.innerText = el.description;
+            let price = document.createElement("h2");
+            price.innerText = el.price;
+            let ingredients = document.createElement("p");
+            ingredients.innerText = el.ingredients[0];
+            let button = document.createElement("button");
+            button.innerText = "Buy";
+            let arr = JSON.parse(localStorage.getItem("buy")) || [];
+            button.addEventListener("click", () => {
+              let found = arr.filter((e) => e.id == el.id);
+              if (found.length === 0) {
+                arr.push(el);
+                localStorage.setItem("buy", JSON.stringify(arr));
+                alert("your order placed sucessfully");
+              } else {
+                alert("already in cart");
+              }
+            });
+            desdiv.appendChild(img);
+            content.appendChild(title);
+            content.appendChild(price);
+            content.appendChild(description);
+            content.appendChild(ingredients);
+            container.appendChild(desdiv);
+            container.appendChild(content);
+            container.appendChild(button);
+            menuContainer.appendChild(container);
+          });
+        })
+        .catch((err) => console.log(err));
+    };
+  </script>
+</html>
