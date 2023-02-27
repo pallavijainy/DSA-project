@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        img{
+            width: 30px;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>Add Book</h1>
+    <form id="book-form">
+      <label for="image">Book Cover Image:</label>
+      <input type="text" id="image" placeholder="Enter image URL" />
+
+      <label for="name">Name of the book:</label>
+      <input type="text" id="name" placeholder="Enter book name" />
+
+      <label for="author">Author of the book:</label>
+      <input type="text" id="author" placeholder="Enter book author" />
+
+      <label for="genre">Genre:</label>
+      <select id="genre">
+        <option value="Science">Science</option>
+        <option value="Fiction">Fiction</option>
+        <option value="History">History</option>
+        <option value="Tech">Tech</option>
+        <option value="Business">Business</option>
+      </select>
+
+      <label for="edition">Edition:</label>
+      <select id="edition">
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+      </select>
+
+      <label for="publisher">Publisher:</label>
+      <input type="text" id="publisher" placeholder="Enter book publisher" />
+
+      <label for="cost">Cost:</label>
+      <input type="number" id="cost" placeholder="Enter book cost" />
+
+      <button type="submit">Add Book</button>
+    </form>
+    <h1>Books Table</h1>
+    <table id="book-table">
+      <thead>
+        <tr>
+          <th>Book Cover Image</th>
+          <th>Name of the Book</th>
+          <th>Author of the Book</th>
+          <th>Genre</th>
+          <th>Edition</th>
+          <th>Publisher</th>
+          <th>Cost</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <!-- pop up form  -->
+
+    <div id="editForm" style="display:none">
+        <h2>Edit Book</h2>
+        <form>
+          <label for="name">Name of the book:</label><br>
+          <input type="text" id="name" name="name"><br>
+          <label for="author">Author of the book:</label><br>
+          <input type="text" id="author" name="author"><br>
+          <label for="genre">Genre:</label><br>
+          <select id="genre" name="genre">
+            <option value="Science">Science</option>
+            <option value="Fiction">Fiction</option>
+            <option value="History">History</option>
+            <option value="Tech">Tech</option>
+            <option value="Business">Business</option>
+          </select><br>
+          <label for="edition">Edition:</label><br>
+          <select id="edition" name="edition">
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+          </select><br>
+          <label for="publisher">Publisher:</label><br>
+          <input type="text" id="publisher" name="publisher"><br>
+          <label for="cost">Cost:</label><br>
+          <input type="text" id="cost" name="cost"><br><br>
+          <input type="submit" value="Save">
+          <button onclick="closeEditForm()">Cancel</button>
+        </form>
+  </body>
+  <script src="adminDashboard.js"></script>
+</html>
