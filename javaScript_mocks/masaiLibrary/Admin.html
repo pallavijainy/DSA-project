@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <nav class="navlist">
+        <button><a href="Admin.html">Admin Section</a></button>
+        <button><a href="index.html">User Section</a></button>
+      </nav>
+    </nav>
+
+    <!-- //admin dashboard -->
+
+    <form action="">
+      <input type="text" placeholder="image url" id="image" />
+      <input type="text" placeholder="name of the book" id="name" />
+      <input type="text" placeholder="author of the book" id="author" />
+      <select name="" id="genre">
+        <option value="science">science</option>
+        <option value="fiction">Fiction</option>
+        <option value="History">History</option>
+        <option value="tech">Tech</option>
+        <option value="Business">Business</option>
+      </select>
+
+      <select name="" id="edition">
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+      </select>
+
+      <input type="text" placeholder="publisher" id="publisher" />
+      <input type="number" placeholder="cost" id="cost" />
+
+      <button type="submit" id="submit">submit</button>
+    </form>
+
+    <!-- //table -->
+
+    <div class="container">
+      <table>
+        <tr>
+          <th>Book Cover Image</th>
+          <th>Name of the book</th>
+          <th>Author of the book</th>
+          <th>Genre</th>
+          <th>Edition</th>
+          <th>Publisher</th>
+          <th>Cost</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </table>
+    </div>
+
+    <!-- //MODAL -->
+    <div id="editForm" style="display:none">
+      <h2>Edit Book</h2>
+      <form action="">
+        <input type="text" placeholder="image url" id="imagemo" />
+        <input type="text" placeholder="name of the book" id="namemo" />
+        <input type="text" placeholder="author of the book" id="authormo" />
+        <select name="" id="genremo">
+          <option value="science">science</option>
+          <option value="fiction">Fiction</option>
+          <option value="History">History</option>
+          <option value="tech">Tech</option>
+          <option value="Business">Business</option>
+        </select>
+  
+        <select name="" id="editionmo">
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+          <option value="2022">2022</option>
+        </select>
+  
+        <input type="text" placeholder="publisher" id="publishermo" />
+        <input type="number" placeholder="cost" id="costmo" />
+  
+        <button type="submit" id="save">save</button>
+      </form>
+    
+      
+        <!-- <button onclick="closeEditForm()">Cancel</button> -->
+      </form>
+  </body>
+
+  <script>
+    let formDetail = document.querySelector("form");
+    let btn = document.querySelector("#submit");
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const image = formDetail.image.value;
+      const name = formDetail.name.value;
+      const author = formDetail.author.value;
+      const genre = formDetail.genre.value;
+      const edition = formDetail.edition.value;
+      const publisher = formDetail.publisher.value;
+      const cost = formDetail.cost.value;
+      const borrowed = false;
+      let arr = [];
+      let obj = {
+        image,
+        name,
+        author,
+        genre,
+        edition,
+        publisher,
+        cost,
+        borrowed,
+      };
+
+      fetch("http://localhost:3000/Books", {
+        method: "POST",
+        body: JSON.stringify(obj),
+        headers: {
+          "Content-type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        // .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    });
+
+    fetch("http://localhost:3000/Books")
+      .then((res) => res.json())
+      .then((res) => {
+        res.forEach((el) => {
+          let col = document.createElement("tr");
+
+          let image = document.createElement("td");
+          image.innerText = el.image;
+          let name = document.createElement("td");
+          name.innerText = el.name;
+          let author = document.createElement("td");
+          author.innerText = el.author;
+          let genre = document.createElement("td");
+          genre.innerText = el.genre;
+          let edition = document.createElement("td");
+          edition.innerText = el.edition;
+          let publisher = document.createElement("td");
+          publisher.innerText = el.publisher;
+          let cost = document.createElement("td");
+          cost.innerText = el.cost;
+          let edit = document.createElement("td");
+          let btn = document.createElement("button");
+          btn.innerText = "EDIT";
+          edit.append(btn);
+
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+          const modal= document.querySelector("#editForm")
+          modal.style.display = "block"
+          });
+
+//edit
+
+const savebtn = document.querySelector("#save")
+savebtn.addEventListener("click" , (e)=>{
+  e.preventDefault()
+
+  const image = document.querySelector("#imagemo").value
+      const name = document.querySelector("#namemo").value
+      const author = document.querySelector("#authormo").value
+      const genre = document.querySelector("#genremo").value
+      const edition = document.querySelector("#editionmo").value
+      const publisher = document.querySelector("#publishermo").value
+      const cost  = document.querySelector("#costmo").value
+      const borrowed = false;
+      let arr = [];
+      let obj2= {
+        image,
+        name,
+        author,
+        genre,
+        edition,
+        publisher,
+        cost,
+        borrowed,
+      };
+
+      fetch(`http://localhost:3000/Books/${el.id}`,{
+        method:"PATCH",
+        body:JSON.stringify(obj2),
+        headers: {
+          "Content-type": "application/json",
+        }
+      }).then((res)=>res.json()).then((res)=>console.log(res)).catch((err)=>console.log(err))
+  
+  
+});
+
+
+
+          let Delete = document.createElement("td");
+          let delbtn = document.createElement("button");
+          delbtn.innerText = "DELETE";
+          Delete.append(delbtn);
+
+          delbtn.addEventListener("click", (e) => {
+            fetch(`http://localhost:3000/Books/${el.id}`, {
+              method: "DELETE",
+            })
+              .then((res) => res.json())
+              .then((res) => {
+                console.log(res);
+                console.log("deleted");
+              })
+              .catch((err) => console.log(err));
+          });
+
+          col.append(
+            image,
+            name,
+            author,
+            genre,
+            edition,
+            publisher,
+            cost,
+            edit,
+            Delete
+          );
+
+          document.querySelector("table").append(col);
+        });
+      })
+      .catch((err) => console.log(err));
+
+
+
+
+    
+  </script>
+</html>
