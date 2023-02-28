@@ -186,12 +186,13 @@ savebtn.addEventListener("click" , (e)=>{
       };
 
       fetch(`http://localhost:3000/Books/${el.id}`,{
+        
         method:"PATCH",
         body:JSON.stringify(obj2),
         headers: {
           "Content-type": "application/json",
         }
-      }).then((res)=>res.json()).then((res)=>console.log(res)).catch((err)=>console.log(err))
+      }).then((res)=>res.json()).then((res)=>console.log(res.id)).catch((err)=>console.log(err))
   
   
 });
