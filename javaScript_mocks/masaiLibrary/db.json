@@ -1,0 +1,48 @@
+{
+    "Books": [
+        {
+            "image": "https://m.media-amazon.com/images/I/5165He67NEL.jpg",
+            "name": "hindi",
+            "author": "pal",
+            "genre": "History",
+            "edition": "2020",
+            "publisher": "mere",
+            "cost": "1000",
+            "borrowed": false,
+            "id": 2
+        },
+        {
+            "image": "https://m.media-amazon.com/images/I/5165He67NEL.jpg",
+            "name": "hindi",
+            "author": "pal",
+            "genre": "History",
+            "edition": "2020",
+            "publisher": "mere",
+            "cost": "1000",
+            "borrowed": false,
+            "id": 4
+        },
+        {
+            "image": "https://m.media-amazon.com/images/I/5165He67NEL.jpg",
+            "name": "computer science",
+            "author": "sab",
+            "genre": "tech",
+            "edition": "2020",
+            "publisher": "daniel",
+            "cost": "1000",
+            "borrowed": false,
+            "id": 5
+        },
+        {
+            "image": "https://m.media-amazon.com/images/I/5165He67NEL.jpg",
+            "name": "computer science",
+            "author": "sab",
+            "genre": "tech",
+            "edition": "2020",
+            "publisher": "mere p",
+            "cost": "1000",
+            "borrowed": false,
+            "id": 6
+        }
+    ]
+}

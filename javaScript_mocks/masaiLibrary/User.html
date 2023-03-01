@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        img {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>user section</h1>
+        <!-- //sorting -->
+
+        <div class="sort">
+            <button id="low" value="asc" onClick="handleClick(value)">
+                Low to High
+            </button>
+            <button id="high" value="desc" onClick="handleClick(value)">
+                High TO low
+            </button>
+        </div>
+        <div class="filter">
+            <select name="" id="genre" onChange="handleChange()">
+                <option value="science">science</option>
+                <option value="fiction">Fiction</option>
+                <option value="History">History</option>
+                <option value="tech">Tech</option>
+                <option value="Business">Business</option>
+            </select>
+        </div>
+        <div id="container">
+            <div class="imgdiv"></div>
+            <div class="detaildiv"></div>
+        </div>
+    </div>
+
+    <div class="detail" style="display: none"></div>
+</body>
+
+<script>
+    fetch("http://localhost:3000/Books")
+        .then((res) => res.json())
+        .then((res) => {
+            display(res);
+        })
+        .catch((err) => console.log(err));
+
+    //filter
+
+    const handleChange = () => {
+        const calgenre = document.querySelector("#genre").value;
+
+        try {
+            fetch(`http://localhost:3000/Books?genre=${calgenre}`)
+                .then((res) => res.json())
+                .then((res) => {
+                    document.querySelector(".imgdiv").innerHTML = "";
+                    document.querySelector(".detaildiv").innerHTML = "";
+                    display(res);
+                });
+        } catch (error) {
+            console.log(err);
+        }
+    };
+
+    //sorting
+
+    const handleClick = (value) => {
+        console.log(value);
+        fetch(`http://localhost:3000/Books?_sort=cost&_order=${value}`)
+            .then((res) => res.json())
+            .then((res) => {
+                document.querySelector(".imgdiv").innerHTML = "";
+                document.querySelector(".detaildiv").innerHTML = "";
+                display(res);
+            })
+            .catch((err) => console.log(err));
+    };
+
+    const display = (arr) => {
+        arr.forEach((el) => {
+            const image = document.createElement("img");
+            image.src = el.image;
+
+            const name = document.createElement("h1");
+            name.innerText = el.name;
+            const author = document.createElement("h4");
+            author.innerText = el.author;
+            const genre = document.createElement("h4");
+            genre.innerText = el.genre;
+            const edition = document.createElement("h4");
+            edition.innerText = el.edition;
+            const publisher = document.createElement("h4");
+            publisher.innerText = el.publisher;
+            const cost = document.createElement("h4");
+            cost.innerText = el.cost;
+            const btn = document.createElement("button");
+            btn.innerText = "Borrow";
+
+            btn.addEventListener("click", () => {
+                fetch(`http://localhost:3000/Books/${el.id}`)
+                    .then((el) => el.json())
+                    .then((el) => {
+                        const p = document.querySelector(".detail");
+                        p.style.display = "block";
+                        const image = document.createElement("img");
+                        image.src = el.image;
+
+                        const name = document.createElement("h1");
+                        name.innerText = el.name;
+                        const author = document.createElement("h4");
+                        author.innerText = el.author;
+                        const genre = document.createElement("h4");
+                        genre.innerText = el.genre;
+                        const edition = document.createElement("h4");
+                        edition.innerText = el.edition;
+                        const publisher = document.createElement("h4");
+                        publisher.innerText = el.publisher;
+                        const cost = document.createElement("h4");
+                        cost.innerText = `Total Cost:- ${el.cost}`;
+
+                        const date = document.createElement("h4");
+                        date.innerText = Date.now().toString();
+
+                        const borName = document.createElement("h4");
+                        borName.innerText = "John Doe";
+
+                        const close = document.createElement("button");
+                        close.innerText = "Close";
+                        close.addEventListener("click", () => {
+                            p.style.display = "none";
+                        });
+
+                        const confirm = document.createElement("button");
+                        confirm.innerText = "Confirm";
+                        confirm.addEventListener("click", () => {
+                            fetch(`http://localhost:3000/Books/${el.id}`, {
+                                method: "PATCH",
+                                body: JSON.stringify(),
+                            });
+                        });
+
+                        p.append(
+                            name,
+                            author,
+                            genre,
+                            edition,
+                            publisher,
+                            cost,
+                            date,
+                            borName,
+                            close,
+                            confirm
+                        );
+                    })
+                    .catch((err) => console.log(err));
+            });
+
+            document.querySelector(".imgdiv").append(image);
+            document
+                .querySelector(".detaildiv")
+                .append(name, author, genre, edition, publisher, cost, btn);
+        });
+    };
+</script>
+
+</html>
