@@ -87,7 +87,8 @@
     
       
         <!-- <button onclick="closeEditForm()">Cancel</button> -->
-      </form>
+      
+      
   </body>
 
   <script>
@@ -153,49 +154,14 @@
           btn.innerText = "EDIT";
           edit.append(btn);
 
-          btn.addEventListener("click", (e) => {
-            e.preventDefault();
-          const modal= document.querySelector("#editForm")
-          modal.style.display = "block"
-          });
+           btn.onclick = function(){
+            console.log("op");
+              updateBook(el);
+
+           }
 
 //edit
 
-const savebtn = document.querySelector("#save")
-savebtn.addEventListener("click" , (e)=>{
-  e.preventDefault()
-
-  const image = document.querySelector("#imagemo").value
-      const name = document.querySelector("#namemo").value
-      const author = document.querySelector("#authormo").value
-      const genre = document.querySelector("#genremo").value
-      const edition = document.querySelector("#editionmo").value
-      const publisher = document.querySelector("#publishermo").value
-      const cost  = document.querySelector("#costmo").value
-      const borrowed = false;
-      let arr = [];
-      let obj2= {
-        image,
-        name,
-        author,
-        genre,
-        edition,
-        publisher,
-        cost,
-        borrowed,
-      };
-
-      fetch(`http://localhost:3000/Books/${el.id}`,{
-        
-        method:"PATCH",
-        body:JSON.stringify(obj2),
-        headers: {
-          "Content-type": "application/json",
-        }
-      }).then((res)=>res.json()).then((res)=>console.log(res.id)).catch((err)=>console.log(err))
-  
-  
-});
 
 
 
@@ -235,6 +201,65 @@ savebtn.addEventListener("click" , (e)=>{
 
 
 
+
+
+      function updateBook(book){
+        console.log(book);
+
+        const modal = document.querySelector("#editForm")
+        modal.style.display = "block"
+        const savebtn = document.querySelector("#save");
+          document.querySelector("#imagemo").value = book.image;
+        document.querySelector("#namemo").value = book.name;
+         document.querySelector("#authormo").value = book.author;
+    document.querySelector("#genremo").value = book.genre;
+        document.querySelector("#editionmo").value =book.edition;
+         document.querySelector("#publishermo").value = book.publisher;
+         document.querySelector("#costmo").value = book.cost;
+        
+       savebtn.addEventListener("click" , (el)=>{
+         
+  el.preventDefault()
+    console.log(book.id)
+
+   
+
+  const image = document.querySelector("#imagemo").value
+      const name = document.querySelector("#namemo").value
+      const author = document.querySelector("#authormo").value
+      const genre = document.querySelector("#genremo").value
+      const edition = document.querySelector("#editionmo").value
+      const publisher = document.querySelector("#publishermo").value
+      const cost  = document.querySelector("#costmo").value
+      const borrowed = false;
+    
+      let obj2= {
+        image,
+        name,
+        author,
+        genre,
+        edition,
+        publisher,
+        cost,
+        borrowed,
+      };
+
+      console.log(obj2)
+
+      fetch(`http://localhost:3000/Books/${book.id}`,{
+        
+        method:"PATCH",
+        body:JSON.stringify(obj2),
+        headers: {
+          "Content-type": "application/json",
+        }
+      }).then((res)=>res.json()).then((res)=>console.log(res.id)).catch((err)=>console.log(err))
+  
+  
+});
+
+      }
+ 
 
     
   </script>
