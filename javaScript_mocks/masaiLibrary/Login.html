@@ -25,6 +25,7 @@
       let password = formDetail.pass.value;
 
       let data = { email, password };
+      console.log(data);
       fetch("https://reqres.in/api/login", {
         method: "POST",
         body: JSON.stringify(data),

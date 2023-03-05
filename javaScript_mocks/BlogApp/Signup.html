@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <form>
+        <input type="text" placeholder="username" id="name" />
+        <input type="text" placeholder="imageurl" id="url" />
+        <input type="text" placeholder="email" id="email" />
+        <input type="text" placeholder="password" id="password" />
+        <button type="submit" id="submit">submit</button>
+      </form>
+    </div>
+  </body>
+
+  <script>
+    let form = document.querySelector("form");
+
+    let btn = document.querySelector("#submit");
+
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      let name = form.name.value;
+      let url = form.url.value;
+      let email = form.email.value;
+      let password = form.password.value;
+
+      let obj = { name, url, email, password };
+      console.log(obj);
+      fetch("http://localhost:8080/users", {
+        method: "POST",
+        body: JSON.stringify(obj),
+        headers: {
+          "Content-type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          if (res) {
+            window.location.href = "/SignIn.html";
+          }
+        })
+        .then((err) => console.log(err));
+    });
+  </script>
+</html>

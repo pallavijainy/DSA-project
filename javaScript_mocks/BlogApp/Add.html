@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="">
+      <input type="text" placeholder="title" id="title" />
+      <input type="text" placeholder="content" id="content" />
+      <select name="" id="category">
+        <option value="Business">Business</option>
+        <option value="Tech">Tech</option>
+        <option value="Lifestyle">Lifestyle</option>
+        <option value="Entertainment">Entertainment</option>
+      </select>
+
+      <input type="date" id="date" />
+      <button type="submit" id="submit">post</button>
+    </form>
+  </body>
+
+  <script>
+    let name = localStorage.getItem("username");
+    // console.log(name);
+
+    let form = document.querySelector("form");
+    let btn = document.querySelector("#submit");
+
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      let title = form.title.value;
+      let content = form.content.value;
+      let category = form.category.value;
+      let date = form.date.value;
+      let obj = { name, title, content, category, date };
+
+      fetch("http://localhost:8080/blogs", {
+        method: "POST",
+        body: JSON.stringify(obj),
+        headers: {
+          "content-type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    });
+  </script>
+</html>

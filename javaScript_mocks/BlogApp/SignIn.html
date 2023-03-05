@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <form action="">
+        <input type="text" placeholder="email" id="email" />
+        <input type="text" placeholder="password" id="password" />
+        <button type="submit" id="submit">submit</button>
+      </form>
+    </div>
+  </body>
+
+  <script>
+    let form = document.querySelector("form");
+    let btn = document.querySelector("#submit");
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      let emaillogin = form.email.value;
+      let passwordlogin = form.password.value;
+
+      fetch("http://localhost:8080/users")
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res);
+
+          let user = res.find(
+            (el) => el.email === emaillogin && el.password === passwordlogin
+          );
+          console.log(user);
+
+          if (user) {
+            localStorage.setItem("username", user.name);
+
+            alert("login successfull");
+            window.location.href = "/Add.html";
+          } else {
+            alert("invalid credentials");
+          }
+        })
+        .catch((err) => console.log(err));
+    });
+  </script>
+</html>
