@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <h1>Admin Login Page</h1>
     <form class="form">
-      <input id="email" type="text" placeholder="email" />
-      <input id="pass" type="text" placeholder="password" />
-      <button id="btn" type="submit">submit</button>
+        <input id="email" type="text" placeholder="email" />
+        <input id="pass" type="text" placeholder="password" />
+        <button id="btn" type="submit">submit</button>
     </form>
-  </body>
+</body>
 
-  <script>
+<script>
     let formDetail = document.querySelector("form");
     const btn = document.querySelector("#btn");
 
     btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      let email = formDetail.email.value;
-      let password = formDetail.pass.value;
+        e.preventDefault();
+        let email = formDetail.email.value;
+        let password = formDetail.pass.value;
 
+<<<<<<< HEAD
       let data = { email, password };
       console.log(data);
       fetch("https://reqres.in/api/login", {
@@ -41,8 +44,27 @@
           if (token) {
             window.location.href = "Admin.html";
           }
+=======
+        let data = { email, password };
+        fetch("https://reqres.in/api/login", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-type": "application/json",
+            },
+>>>>>>> e320c9f7d03dcb3333dec67c395a09cc624e48d5
         })
-        .catch((err) => console.log(err));
+            .then((res) => res.json())
+            .then((res) => {
+                localStorage.setItem("token", res.token);
+
+                let token = localStorage.getItem("token");
+                if (token) {
+                    window.location.href = "Admin.html";
+                }
+            })
+            .catch((err) => console.log(err));
     });
-  </script>
+</script>
+
 </html>
