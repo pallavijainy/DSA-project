@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Page</title>
+    <style>
+      /* All Your css for Order page goes here  */
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <h1>Web Coffee Shop Menu</h1>
+      <a href="./index.html">Home</a>
+      <a href="./order.html">Ordered</a>
+    </div>
+    <h1 id="total">
+      Your total order value is :- <span id="order-total">0</span>
+    </h1>
+    <div id="cupon">
+      <input type="text" id="inpCou" />
+      <button onclick="handleClick()">Add Cupon</button>
+    </div>
+    <div id="order-container">
+      <!-- Here Append All the Order Cards here-->
+    </div>
+  </body>
+  <script>
+    // All your JS code for Order Page goes here
+    const div = document.querySelector("#order-container");
+    let total = 0;
+
+    const display = (arr) => {
+      arr.forEach((el) => {
+        const imgdiv = document.createElement("div");
+        const content = document.createElement("div");
+        const all = document.createElement("div");
+
+        const title = document.createElement("h4");
+        title.innerText = el.title;
+        const image = document.createElement("img");
+        image.src = el.image;
+        image.style.width = "50px";
+        const des = document.createElement("h4");
+        des.innerText = el.description;
+        const price = document.createElement("h4");
+        price.innerText = el.price;
+        const btn = document.createElement("button");
+        btn.innerText = "cancel";
+
+        btn.addEventListener("click", (el) => {
+          let index = arr.indexOf(el);
+          arr.splice(index, 1);
+          localStorage.setItem("buy", JSON.stringify(arr));
+          location.reload();
+        });
+
+        const value = document.querySelector("#order-total");
+        total += Number(el.price);
+        value.innerText = total;
+
+        const count = document.createElement("span");
+        count.innerText = 1;
+        const inc = document.createElement("button");
+        inc.innerText = "+";
+        inc.addEventListener("click", () => {
+          const newCount = parseInt(count.innerText) + 1;
+          count.innerText = newCount;
+          total += Number(el.price);
+          price.innerText = el.price;
+          const value = document.querySelector("#order-total");
+          value.innerText = total;
+        });
+        const dec = document.createElement("button");
+        dec.innerText = "-";
+        dec.addEventListener("click", () => {
+          const newCount = parseInt(count.innerText) - 1;
+          if (newCount >= 1) {
+            count.innerText = newCount;
+            total -= Number(el.price);
+            price.innerText = el.price;
+            const value = document.querySelector("#order-total");
+            value.innerText = total;
+          }
+        });
+
+        imgdiv.append(image);
+        content.append(title, des, price, btn, inc, count, dec);
+        all.append(imgdiv, content);
+        document.querySelector("#order-container").append(all);
+      });
+    };
+    let count_for_coupon = 1;
+    function handleClick() {
+      const inp = document.querySelector("#inpCou").value;
+      if (count_for_coupon > 1) {
+        alert("alredy coupon applied");
+      } else {
+        if (inp == "Masai30") {
+          total -= Math.floor((total * 30) / 100);
+          count_for_coupon++;
+          document.querySelector("#order-total").innerText = total;
+        } else {
+          alert("invalid coupon");
+        }
+      }
+    }
+
+    const get = JSON.parse(localStorage.getItem("buy"));
+    display(get);
+  </script>
+</html>
