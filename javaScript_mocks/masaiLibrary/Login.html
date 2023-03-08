@@ -26,7 +26,6 @@
         let email = formDetail.email.value;
         let password = formDetail.pass.value;
 
-<<<<<<< HEAD
       let data = { email, password };
       console.log(data);
       fetch("https://reqres.in/api/login", {
@@ -44,15 +43,6 @@
           if (token) {
             window.location.href = "Admin.html";
           }
-=======
-        let data = { email, password };
-        fetch("https://reqres.in/api/login", {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-                "Content-type": "application/json",
-            },
->>>>>>> e320c9f7d03dcb3333dec67c395a09cc624e48d5
         })
             .then((res) => res.json())
             .then((res) => {
