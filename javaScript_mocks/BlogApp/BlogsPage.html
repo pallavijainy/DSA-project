@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <div id="container" style="border: 1px solid black"></div>
+      <div>
+        <button id="prev">prev</button>
+        <button id="current">1</button>
+        <button id="next">next</button>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    let page = 1;
+
+    const current = document.querySelector("#current");
+
+    const getData = (page) => {
+      fetch(`http://localhost:8080/blogs?_page=${page}&_limit=1`)
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res);
+          display(res);
+        })
+        .catch((err) => console.log(err));
+    };
+    getData(page);
+    const prev = document.querySelector("#prev");
+    prev.addEventListener("click", () => {
+      page--;
+      getData(page);
+      console.log(page);
+
+      current.innerText = page;
+    });
+
+    const next = document.querySelector("#next");
+    next.addEventListener("click", () => {
+      page++;
+      getData(page);
+      console.log(page);
+      current.innerText = page;
+    });
+
+    const display = (arr) => {
+      document.querySelector("#container").innerHTML = "";
+      arr.forEach((el) => {
+        const name = document.createElement("h2");
+        name.innerText = el.name;
+        const title = document.createElement("h2");
+        title.innerText = el.title;
+        const content = document.createElement("h2");
+        content.innerText = el.content;
+        const category = document.createElement("h2");
+        category.innerText = el.category;
+        const date = document.createElement("h2");
+        date.innerText = el.date;
+        const likes = document.createElement("h2");
+        likes.innerText = el.likes;
+
+        document
+          .querySelector("#container")
+          .append(name, title, content, category, date, likes);
+      });
+    };
+  </script>
+</html>

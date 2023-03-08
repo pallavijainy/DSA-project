@@ -1,0 +1,38 @@
+{
+  "users": [
+    {
+      "name": "pallavi",
+      "url": "sdf",
+      "email": "",
+      "password": "",
+      "id": 1
+    },
+    {
+      "name": "pallavi",
+      "url": "sdf",
+      "email": "pallavijainy0612@gmail.com",
+      "password": "sdf",
+      "id": 2
+    }
+  ],
+  "blogs": [
+    {
+      "name": "pallavi",
+      "title": "dsf",
+      "content": "sdf",
+      "category": "Tech",
+      "date": "2023-03-15",
+      "id": 1,
+      "likes": 24,
+      "comments": []
+    },
+    {
+      "name": "pallavi",
+      "title": "sf",
+      "content": "sdf",
+      "category": "Tech",
+      "date": "2023-03-07",
+      "id": 2
+    }
+  ]
+}
