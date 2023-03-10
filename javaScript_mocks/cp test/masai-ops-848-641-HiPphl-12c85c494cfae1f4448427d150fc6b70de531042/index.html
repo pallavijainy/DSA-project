@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <style>
+      /* All Your css for Home page goes here  */
+      #menu-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="nav">
+      <h1>Web Coffee Shop Menu</h1>
+      <a href="./index.html">Home</a>
+      <a href="./order.html">Ordered</a>
+    </div>
+    <div id="filter">
+      <input type="number" id="lower" />
+      <input type="number" id="upper" />
+      <button id="filter-btn">Filter</button>
+    </div>
+    <select id="sort" onchange="sort()">
+      <option value="">Sort By Price</option>
+      <option value="asc">Ascending</option>
+      <option value="desc">Descending</option>
+    </select>
+    <h1 id="alert"></h1>
+    <div id="menu-container">
+      <!-- Here Append All the Items  -->
+    </div>
+  </body>
+  <script>
+    // All your JS code for Home Page goes here
+    const url = `https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-coffee`;
+
+    //data
+    fetch(url)
+      .then((res) => res.json())
+      .then((res) => {
+        display(res.data);
+      })
+      .catch((err) => console.log(err));
+    //filter
+
+    const btnfilter = document.querySelector("#filter-btn");
+    btnfilter.addEventListener("click", mybtn);
+
+    function mybtn(e) {
+      e.preventDefault();
+      const inpone = document.querySelector("#lower").value;
+      const inptwo = document.querySelector("#upper").value;
+
+      fetch(
+        `https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-coffee?price=${inpone}&price`
+      )
+        .then((res) => res.json())
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    }
+
+    //sorting
+
+    function sort() {
+      const sorting = document.querySelector("#sort").value;
+
+      fetch(
+        `https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-coffee?sort=price&order=${sorting}`
+      )
+        .then((res) => res.json())
+        .then((res) => {
+          display(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
+
+    const display = (arr) => {
+      let arr1 = JSON.parse(localStorage.getItem("buy")) || [];
+      document.querySelector("#menu-container").innerHTML = "";
+      arr.forEach((el) => {
+        const div = document.querySelector("#menu-container");
+        const imgdiv = document.createElement("div");
+        const content = document.createElement("div");
+        const all = document.createElement("div");
+
+        const title = document.createElement("h4");
+        title.innerText = el.title;
+        const image = document.createElement("img");
+        image.src = el.image;
+        image.style.width = "50px";
+        const des = document.createElement("h4");
+        des.innerText = el.description;
+        const price = document.createElement("h4");
+        price.innerText = el.price;
+        const btn = document.createElement("button");
+        btn.innerText = "BUY";
+
+        btn.addEventListener("click", () => {
+          let alert = document.querySelector("#alert");
+
+          const fil = arr1.filter((e) => e.id === el.id);
+          if (fil.length == 0) {
+            alert.innerText = "Successfully Placed Order";
+            arr1.push(el);
+            localStorage.setItem("buy", JSON.stringify(arr1));
+          } else {
+            alert.innerText = "Already Placed Order";
+          }
+        });
+
+        imgdiv.append(image);
+        content.append(title, des, price, btn);
+        all.append(imgdiv, content);
+        div.append(all);
+      });
+    };
+  </script>
+</html>

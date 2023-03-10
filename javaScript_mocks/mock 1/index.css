@@ -1,0 +1,178 @@
+#navbar {
+  background-image: url("https://images.pexels.com/photos/743986/pexels-photo-743986.jpeg?auto=compress&cs=tinysrgb&w=600");
+  height: 500px;
+}
+
+.ham > img {
+  width: 80px;
+  height: 50px;
+}
+
+.ham {
+  display: flex;
+  justify-content: space-between;
+}
+
+.welcome {
+  text-align: center;
+}
+
+.btn > button {
+  border-radius: 50px;
+}
+.btn :nth-child(1) {
+  background-color: red;
+  color: white;
+}
+.work {
+  text-align: center;
+}
+#workBox {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 200px);
+  grid-template-areas: "a a b b" "c d b b";
+}
+
+#workBox :nth-child(1) {
+  grid-area: a;
+}
+
+#workBox :nth-child(2) {
+  grid-area: b;
+}
+
+#workBox :nth-child(3) {
+  grid-area: c;
+}
+
+#workBox :nth-child(4) {
+  grid-area: d;
+}
+
+.work img {
+  width: 100%;
+  height: 100%;
+}
+
+.apartment {
+  text-align: center;
+}
+#oneDiv {
+  display: flex;
+}
+#twoDiv {
+  display: flex;
+}
+.apartment img {
+  width: 100%;
+  height: 100%;
+}
+
+/* 
+//post section */
+#main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border: 1px solid red;
+}
+#pop {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border: 2px solid black;
+  gap: 100px;
+  width: 60%;
+}
+.post > div {
+  justify-content: center;
+  margin-left: 20%;
+}
+#about img {
+  width: 30px;
+}
+#pop img {
+  width: 50px;
+}
+#about {
+  border: 1px solid green;
+  width: 300px;
+}
+#tag {
+  text-align: center;
+}
+#tag > div {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+@media all and (min-width: 120px) and (max-width: 480px) {
+  .btn {
+    flex-direction: row;
+  }
+  #apartBox > div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #workBox {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(4, 200px);
+    grid-template-areas: "a" "b" "c" "d";
+  }
+
+  #workBox :nth-child(1) {
+    grid-area: a;
+  }
+
+  #workBox :nth-child(2) {
+    grid-area: b;
+  }
+
+  #workBox :nth-child(3) {
+    grid-area: c;
+  }
+
+  #workBox :nth-child(4) {
+    grid-area: d;
+  }
+}
+
+@media all and (min-width: 481px) and (max-width: 768px) {
+  #apartBox {
+    display: flex;
+  }
+  #oneDiv {
+    display: flex;
+    flex-direction: column;
+  }
+  #twoDiv {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #workBox {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 200px);
+    grid-template-areas: "a a" "c d" "b b" "b b";
+  }
+
+  #workBox :nth-child(1) {
+    grid-area: a;
+  }
+
+  #workBox :nth-child(2) {
+    grid-area: b;
+  }
+
+  #workBox :nth-child(3) {
+    grid-area: c;
+  }
+
+  #workBox :nth-child(4) {
+    grid-area: d;
+  }
+}
