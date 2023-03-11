@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Leave Request Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Leave Request Form</h1>
+    <form id="leave-form">
+      <label for="unique-id">Unique ID:</label>
+      <input type="text" id="unique-id" required /><br />
+
+      <label for="name">Name:</label>
+      <input type="text" id="name" minlength="4" required /><br />
+
+      <label for="reason">Reason for leave:</label>
+      <textarea id="reason" required></textarea><br />
+
+      <label for="designation">Designation:</label>
+      <input
+        type="radio"
+        id="employee"
+        name="designation"
+        value="employee"
+        required
+      />
+      <label for="employee">Employee</label>
+      <input type="radio" id="student" name="designation" value="student" />
+      <label for="student">Student</label><br />
+
+      <label for="start-date">Leave Start Date:</label>
+      <input type="date" id="start-date" min="" required /><br />
+
+      <label for="end-date">Leave End Date:</label>
+      <input type="date" id="end-date" min="" required /><br />
+
+      <label for="overseer">Overseer:</label>
+      <select id="overseer" required>
+        <option value="">Select an option</option>
+        <option value="EC">EC</option>
+        <option value="HR">HR</option>
+        <option value="Manager">Manager</option></select
+      ><br />
+
+      <button type="submit">Apply</button>
+    </form>
+
+    <script src="script.js"></script>
+  </body>
+</html>

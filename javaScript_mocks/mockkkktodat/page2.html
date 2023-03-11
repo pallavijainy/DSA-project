@@ -1,0 +1,49 @@
+<form id="leaveForm">
+  <div>
+    <label for="uniqueId">Unique ID:</label>
+    <input type="text" id="uniqueId" name="uniqueId" required />
+  </div>
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" minlength="4" required />
+  </div>
+  <div>
+    <label for="reason">Reason for leave:</label>
+    <textarea id="reason" name="reason" rows="4" cols="50" required></textarea>
+  </div>
+  <div>
+    <label for="designation">Designation:</label>
+    <input
+      type="radio"
+      id="employee"
+      name="designation"
+      value="employee"
+      checked
+    />
+    <label for="employee">Employee</label>
+    <input type="radio" id="student" name="designation" value="student" />
+    <label for="student">Student</label>
+  </div>
+  <div>
+    <label for="startDate">Leave Start Date:</label>
+    <input type="date" id="startDate" name="startDate" min="<?php echo date("Y-m-d"); ?>"
+    required>
+  </div>
+  <div>
+    <label for="endDate">Leave End Date:</label>
+    <input type="date" id="endDate" name="endDate" min="<?php echo date("Y-m-d"); ?>"
+    required>
+  </div>
+  <div>
+    <label for="overseer">Overseer:</label>
+    <select id="overseer" name="overseer" required>
+      <option value="">Select</option>
+      <option value="EC">EC</option>
+      <option value="HR">HR</option>
+      <option value="Manager">Manager</option>
+    </select>
+  </div>
+  <div>
+    <button type="submit">Apply</button>
+  </div>
+</form>
