@@ -1,0 +1,412 @@
+Pallavi Jain
+# `**Instructions**`
+
+- Read the entire question carefully for at least 15 mins, understand it and then code it.
+- Don't jump directly into code.
+- Commit your code every 30 minutes with a proper commit message to your repository (we will monitor every commit)
+- Use HTML, CSS, and Vanilla JavaScript to solve this question.
+- Invest ample time in providing good styles, and don’t use any external libraries.
+
+`**Problem Statement**:`
+
+The challenge is to build a leave portal for Masai students and employees, where one can apply for leave through a form, and check the status from a dashboard.
+
+`**Features:**`
+
+- Your app should contain a navbar with the following pages
+    - Leave Request Page (index.html)
+    - Dashboard Page (dashboard.html)
+    - Status Page (status.html)
+    
+
+---
+
+## `**Leave Request Page**`
+
+- The leave request page should contain a form with the following fields :
+    - **Unique ID**: Should be unique, duplicate ID should not be allowed.
+    - **Name:** Should be at least 4 characters.
+    - **Reason for leave** :  Should be a textarea input field
+    - **Designation** :  (Employee / Student) - You can use radio buttons for this.
+    - **Leave Start Date :** Should be a date input field (user should not be able to select past dates)
+    - **Leave End Date :** Should be a date input field  (user should not be able to select past dates)
+    - **Overseer**:  (EC / HR / Manger) - Use select tag for this.
+    - **Apply Button**
+- On clicking “Apply” the **form should be validated** and if the user has entered any value that does not match the constraints given, appropriate alerts should be given.
+- After successful validation, the registration data should be stored in **LocalStorage**.
+Solution
+Project Setup
+To start with, we will create a directory and create three html files for three pages, namely index.html, dashboard.html, and status.html. We will also create a styles directory that will contain our CSS files.
+
+lua
+Copy code
+├── index.html
+├── dashboard.html
+├── status.html
+└── styles
+    ├── index.css
+    ├── dashboard.css
+    └── status.css
+We will also create an assets directory that will contain all our static files like images and icons.
+
+lua
+Copy code
+├── assets
+│   ├── masai_logo.png
+│   └── user_icon.png
+├── index.html
+├── dashboard.html
+├── status.html
+└── styles
+    ├── index.css
+    ├── dashboard.css
+    └── status.css
+Navbar
+We will create a navbar that will contain links to all three pages. For this, we will create a header element and add the navbar class to it. Inside the header element, we will add a nav element and three a tags that will link to the three pages. We will also add the active class to the a tag of the current page to highlight it.
+
+html
+Copy code
+<!-- index.html -->
+<header class="navbar">
+  <nav>
+    <a href="./index.html" class="active">Leave Request</a>
+    <a href="./dashboard.html">Dashboard</a>
+    <a href="./status.html">Status</a>
+  </nav>
+</header>
+We will add the following CSS to style the navbar.
+
+css
+Copy code
+/* styles/index.css */
+.navbar {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.navbar a {
+  color: #333;
+  font-weight: bold;
+  text-decoration: none;
+  margin-right: 1rem;
+}
+
+.navbar a.active {
+  color: #0077b6;
+  border-bottom: 2px solid #0077b6;
+}
+Leave Request Page
+Form
+We will create a form element that will contain all the input fields. We will add labels to each input field and add the required attribute to all the mandatory fields. We will also add the id attribute to the input fields, which we will use later to get the values entered by the user.
+
+html
+Copy code
+<!-- index.html -->
+<main class="container">
+  <form class="form" id="leave-request-form">
+    <h1>Leave Request Form</h1>
+
+    <label for="unique-id">Unique ID*</label>
+    <input type="text" id="unique-id" name="unique-id" required>
+
+    <label for="name">Name*</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="reason">Reason for Leave*</label>
+    <textarea id="reason" name="reason" required></textarea>
+
+    <label for="designation">Designation*</label>
+    <div class="radio-group" id="designation">
+      <input type="radio" id="employee" name="designation" value="employee" required>
+      <label for="employee">Employee</label>
+      <input type="radio" id="student" name="designation" value="student" required>
+      <label for="student">Student</label>
+    </div>
+
+    <label for="start-date">Leave Start Date
+
+
+
+Pallavi Jain
+## **`Dashboard Page`**
+
+- All the users who have applied for leave should be displayed in the form of a table with all the fields entered during the registration as columns.
+- Along with these fields, a new field called “**OTP**” should be appended to each user, with a **4-digit number**, which should be randomly generated.  **Hint. Math.random()**
+- Each row should also contain “**Reject Leave**” and “**Grant Leave**” buttons colored “Red ” and “Green ” respectively.
+- Clicking on **Reject Leave** button**,** an alert should be shown and that particular row should be removed from the dashboard.
+- Clicking on **Grant Leave** button, the user should be prompted by a modal/popup with the following details and an OTP component where the user has to enter the correct OTP generated during the registration. (Note : OTP will be unique for each user)
+    
+    
+    ![                                   Modal / Popup Reference Image](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7600cff9-0717-475c-8be0-e459b11c191b/Masai_Leave_Mock_-_1.png)
+    
+                                       Modal / Popup Reference Image
+    
+
+- On OTP verification, the row should be removed from the dashboard. On, incorrect OTP, proper alerts should be given.
+- The dashboard page should have the following functionalities
+    - **Filter** by Designation (Employee / Student)
+    - **Search** by Name (onChange event)
+    - **Sort** by days (Should be calculated from start and end date)
+
+All the above functionalities should be working togather seamlessly.
+Okay, I understand the requirements. Let me know if you need any help getting started.
+
+
+
+
+Pallavi Jain
+code for dashboard page
+Sure, here's an example implementation for the dashboard page:
+
+html
+Copy code
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dashboard - Masai Leave Portal</title>
+  </head>
+  <body>
+    <h1>Dashboard</h1>
+    
+    <div>
+      <label for="designation-filter">Filter by Designation:</label>
+      <select id="designation-filter">
+        <option value="">All</option>
+        <option value="employee">Employee</option>
+        <option value="student">Student</option>
+      </select>
+    </div>
+    
+    <div>
+      <label for="name-search">Search by Name:</label>
+      <input type="text" id="name-search" />
+    </div>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Unique ID</th>
+          <th>Name</th>
+          <th>Reason for Leave</th>
+          <th>Designation</th>
+          <th>Leave Start Date</th>
+          <th>Leave End Date</th>
+          <th>Overseer</th>
+          <th>Days</th>
+          <th>OTP</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="leave-requests">
+        <!-- This is where the leave requests will be inserted dynamically -->
+      </tbody>
+    </table>
+    
+    <script src="dashboard.js"></script>
+  </body>
+</html>
+And here's an example implementation for the JavaScript code (in dashboard.js file):
+
+javascript
+Copy code
+// Retrieve leave requests from LocalStorage
+let leaveRequests = JSON.parse(localStorage.getItem("leaveRequests")) || [];
+
+// Select DOM elements
+const leaveRequestsTable = document.getElementById("leave-requests");
+const designationFilter = document.getElementById("designation-filter");
+const nameSearch = document.getElementById("name-search");
+
+// Render leave requests in the table
+function renderLeaveRequests() {
+  // Clear the table body
+  leaveRequestsTable.innerHTML = "";
+
+  // Filter the leave requests by designation
+  const filteredLeaveRequests = leaveRequests.filter(
+    (leaveRequest) =>
+      !designationFilter.value ||
+      leaveRequest.designation === designationFilter.value
+  );
+
+  // Filter the leave requests by name search
+  const searchedLeaveRequests = filteredLeaveRequests.filter(
+    (leaveRequest) =>
+      !nameSearch.value ||
+      leaveRequest.name.toLowerCase().includes(nameSearch.value.toLowerCase())
+  );
+
+  // Sort the leave requests by days
+  searchedLeaveRequests.sort((a, b) => {
+    const aDays = Math.round(
+      (new Date(a.leaveEndDate) - new Date(a.leaveStartDate)) /
+        (1000 * 60 * 60 * 24)
+    );
+    const bDays = Math.round(
+      (new Date(b.leaveEndDate) - new Date(b.leaveStartDate)) /
+        (1000 * 60 * 60 * 24)
+    );
+    return bDays - aDays;
+  });
+
+  // Render each leave request as a row in the table
+  searchedLeaveRequests.forEach((leaveRequest) => {
+    const row = document.createElement("tr");
+    const otp = Math.floor(Math.random() * 9000) + 1000;
+
+    row.innerHTML = `
+      <td>${leaveRequest.uniqueId}</td>
+      <td>${leaveRequest.name}</td>
+      <td>${leaveRequest.reasonForLeave}</td>
+      <td>${leaveRequest.designation}</td>
+      <td>${leaveRequest.leaveStartDate}</td>
+      <td>${leaveRequest.leaveEndDate}</td>
+      <td>${leaveRequest.overseer}</td>
+      <td>${Math.round(
+
+
+
+Pallavi Jain
+continue
+To add the OTP component in the modal, we can create a new function generateOTP() that generates a random 4-digit number and returns it.
+
+js
+Copy code
+function generateOTP() {
+  return Math.floor(1000 + Math.random() * 9000);
+}
+In the grantLeave() function, we can call this function to generate a new OTP and display it in the modal.
+
+js
+Copy code
+function grantLeave(row) {
+  const otp = generateOTP();
+  const name = row.cells[1].textContent;
+  const designation = row.cells[3].textContent;
+  const startDate = row.cells[4].textContent;
+  const endDate = row.cells[5].textContent;
+
+  const modalBody = `
+    <p>Name: ${name}</p>
+    <p>Designation: ${designation}</p>
+    <p>Start Date: ${startDate}</p>
+    <p>End Date: ${endDate}</p>
+    <p>OTP: <input type="text" id="otp-input"></p>
+  `;
+
+  showModal(modalBody, () => {
+    const otpInput = document.getElementById("otp-input");
+    if (otpInput.value === otp.toString()) {
+      const index = row.rowIndex;
+      table.deleteRow(index);
+      alert("Leave granted successfully!");
+    } else {
+      alert("Invalid OTP! Leave not granted.");
+    }
+  });
+}
+We create a new variable otp and call the generateOTP() function to generate a new OTP. We also get the name, designation, start date, and end date from the table row.
+
+We create the modal body using a template literal string and include the OTP input field. We also pass a callback function that will be called when the user clicks the "Submit" button in the modal. This callback function will check if the entered OTP matches the generated OTP, and if it does, the row will be deleted from the table, and an alert will be shown. If the entered OTP is invalid, an alert will be shown.
+
+Finally, we call the showModal() function with the modal body and callback function as arguments.
+
+
+
+
+Pallavi Jain
+## **`Status Page`**
+
+- The status page should contain all the users who have applied for the leave with the following fields as columns
+    - Unique ID
+    - Name
+    - Days of leave (Should be calculated from start and end date)
+    - Overseer
+    - Status (Granted, Rejected, or Pending)
+- The user should also be able to filter the data based on the status (Granted, Rejected, or Pending).
+As per your requirement, the Status page should display all the users who have applied for leave along with their Unique ID, Name, Days of leave, Overseer, and Status. We can use LocalStorage to retrieve the data from the Leave Request Page and display it on the Status page.
+
+Here's the HTML code for the Status page:
+
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Status</title>
+</head>
+<body>
+    <h1>Status</h1>
+    <label for="statusFilter">Filter by status:</label>
+    <select name="statusFilter" id="statusFilter">
+        <option value="">All</option>
+        <option value="Pending">Pending</option>
+        <option value="Granted">Granted</option>
+        <option value="Rejected">Rejected</option>
+    </select>
+    <br><br>
+    <table id="statusTable">
+        <thead>
+            <tr>
+                <th>Unique ID</th>
+                <th>Name</th>
+                <th>Days of leave</th>
+                <th>Overseer</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script src="status.js"></script>
+</body>
+</html>
+In the above code, we have a filter dropdown to filter the data by status and a table to display the data with columns for Unique ID, Name, Days of leave, Overseer, and Status.
+
+Now, let's write the JavaScript code to retrieve the data from LocalStorage and populate the table:
+
+javascript
+Copy code
+// Get the filter dropdown and table elements
+const statusFilter = document.getElementById("statusFilter");
+const statusTable = document.getElementById("statusTable").getElementsByTagName("tbody")[0];
+
+// Retrieve the data from LocalStorage
+const leaveRequests = JSON.parse(localStorage.getItem("leaveRequests")) || [];
+
+// Populate the table with the data
+function populateTable() {
+    statusTable.innerHTML = "";
+    for (const leaveRequest of leaveRequests) {
+        const startDate = new Date(leaveRequest.startDate);
+        const endDate = new Date(leaveRequest.endDate);
+        const daysOfLeave = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+
+        if (statusFilter.value === "" || statusFilter.value === leaveRequest.status) {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${leaveRequest.id}</td>
+                <td>${leaveRequest.name}</td>
+                <td>${daysOfLeave}</td>
+                <td>${leaveRequest.overseer}</td>
+                <td>${leaveRequest.status}</td>
+            `;
+            statusTable.appendChild(row);
+        }
+    }
+}
+
+// Add event listener to filter dropdown
+statusFilter.addEventListener("change", () => {
+    populateTable();
+});
+
+// Call the function to populate the table initially
+populateTable();
+In the above code, we retrieve the data from LocalStorage using localStorage.getItem("leaveRequests") and parse it using JSON.parse(). Then, we define a populateTable() function to populate the table with the data. We calculate the number of days of leave using the start and end date, and we filter the data based on the selected status in the filter dropdown. Finally, we add an event listener to the filter dropdown to call the populateTable() function whenever the user changes the filter. We call the `populateTable
