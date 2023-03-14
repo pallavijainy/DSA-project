@@ -1,4 +1,4 @@
-function v(n, arr) {
+sfunction v(n, arr) {
   let res = [];
   res[0] = 1;
   let stack = [];

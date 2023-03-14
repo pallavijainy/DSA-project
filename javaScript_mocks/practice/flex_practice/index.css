@@ -6,23 +6,18 @@
 
 
 }
-.grand_parent{
-    width: 100%;
-    height: 100vh;
-    background-color: antiquewhite;
+.row {
+    display: flex;
 }
-h1{
-    font-size: 4rem;
-    padding: 50px;
-    text-align: center;
-    color: black;
-}
-p{
-    text-align: center;
-}
-.parents{
-    width: 80vh;
-    height: auto;
-    margin: auto;
-    background-color: teal;
-}
+.col-2 {
+    flex: 2;
+  }
+  
+  .col-7 {
+    flex: 7;
+  }
+  
+  .col-3 {
+    flex: 3;
+  }
+  

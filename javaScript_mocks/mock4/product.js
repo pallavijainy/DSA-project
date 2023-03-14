@@ -7,13 +7,12 @@ let currentPage = 1;
 
 // Function to fetch products from API for a given page
 function fetchProducts(page) {
-  const limit = 12; // Set the limit parameter to control number of products per page
-  const offset = (page - 1) * limit; // Calculate the offset based on current page number and limit
+  const limit = 5; // Set the limit parameter to control number of products per page
+  const offset = page; // Calculate the offset based on current page number and limit
   const wishlistItems = JSON.parse(localStorage.getItem("wishlist")) || [];
-  fetch(`${productUrl}?limit=${limit}&offset=${offset}`)
+  fetch(`${productUrl}?limit=${limit}&page=${offset}`)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       productContainer.innerHTML = ""; // Clear the product container before adding new products
       data.data.forEach((product) => {
         const card = document.createElement("div");
@@ -98,6 +97,90 @@ document.querySelector("#next-page").addEventListener("click", () => {
   fetchProducts(currentPage);
 });
 
+function sortProducts(a) {
+  let data = a;
+
+  const wishlistItems = JSON.parse(localStorage.getItem("wishlist")) || [];
+  fetch(`${productUrl}`)
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(res);
+      // clear existing products
+      productContainer.innerHTML = "";
+      res.data.sort((a, b) => {
+        if (data === `asc`) {
+          console.log(a);
+          return b.price - a.price;
+        } else {
+          return a.price - b.price;
+        }
+      });
+
+      // render filtered products
+      res.data.forEach((product) => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+
+        // create other elements as before
+        // ...
+        const image = document.createElement("img");
+        image.src = product.image;
+        image.alt = product.title;
+        card.appendChild(image);
+
+        const brand = document.createElement("h3");
+        brand.textContent = product.brand;
+        card.appendChild(brand);
+
+        const title = document.createElement("h2");
+        title.textContent = product.title;
+        card.appendChild(title);
+
+        const category = document.createElement("p");
+        category.textContent = `Category: ${product.category}`;
+        card.appendChild(category);
+
+        const price = document.createElement("p");
+        price.textContent = `Price: ${product.price}`;
+        card.appendChild(price);
+        const wishlist = document.createElement("span");
+        wishlist.innerHTML = "❤️";
+        wishlist.classList.add("wishlist-icon");
+
+        if (wishlistItems.some((item) => item.id === product.id)) {
+          // if the product is in the wishlist, show a filled heart icon
+          wishlist.innerHTML = "❤️";
+        } else {
+          // otherwise, show an empty heart icon
+          wishlist.innerHTML = "♡";
+        }
+
+        wishlist.addEventListener("click", () => {
+          // add or remove the product from the wishlist
+          const index = wishlistItems.findIndex(
+            (item) => item.id === product.id
+          );
+          if (index > -1) {
+            wishlistItems.splice(index, 1);
+          } else {
+            wishlistItems.push(product);
+          }
+          localStorage.setItem("wishlist", JSON.stringify(wishlistItems));
+          // update the heart icon
+          if (wishlistItems.some((item) => item.id === product.id)) {
+            wishlist.innerHTML = "❤️";
+          } else {
+            wishlist.innerHTML = "♡";
+          }
+        });
+
+        card.appendChild(wishlist);
+
+        productContainer.appendChild(card);
+      });
+    })
+    .catch((error) => console.log(error));
+}
 // Filter products by category
 
 function filterProductsByCategory() {

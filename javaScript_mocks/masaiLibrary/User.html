@@ -137,7 +137,6 @@
                 p.style.display = "none";
               });
 
-<<<<<<< HEAD
               const confirm = document.createElement("button");
               confirm.innerText = "Confirm";
               confirm.addEventListener("click", () => {
@@ -146,36 +145,6 @@
                   body: JSON.stringify(),
                 });
               });
-=======
-<<<<<<< HEAD
-              const confirm = document.createElement("button");
-              confirm.innerText = "Confirm";
-              confirm.addEventListener("click", () => {
-                let data = { borrowed: true };
-                fetch(`http://localhost:3000/Books/${el.id}`, {
-                  method: "PATCH",
-                  body: JSON.stringify(data),
-                  headers: {
-                    "Content-type": "application/json",
-                  },
-                })
-                  .then((res) => res.json())
-                  .then((res) => {
-                    localStorage.setItem("store", JSON.stringify(res));
-                  })
-                  .catch((err) => console.log(err));
-              });
-=======
-                        const confirm = document.createElement("button");
-                        confirm.innerText = "Confirm";
-                        confirm.addEventListener("click", () => {
-                            fetch(`http://localhost:3000/Books/${el.id}`, {
-                                method: "PATCH",
-                                body: JSON.stringify(),
-                            });
-                        });
->>>>>>> e320c9f7d03dcb3333dec67c395a09cc624e48d5
->>>>>>> a78613506b37356c6305fdeb67c1f41c11fd46f0
 
               p.append(
                 name,
