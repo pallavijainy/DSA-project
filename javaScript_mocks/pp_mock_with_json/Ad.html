@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ad Page</title>
+    <link rel="stylesheet" href="./css/ad.css" />
+  </head>
+  <body>
+    <nav id="navbar"></nav>
+    <h1>Add Car Page</h1>
+    <form>
+      <label for="brand"> Brand of Car</label>
+      <select id="brand" name="brand">
+        <option value="toyota">Toyota</option>
+        <option value="honda">Honda</option>
+        <option value="nissan">Nissan</option>
+        <option value="tata">Tata</option></select
+      ><br />
+      <label for="transmission">Manual or Automated:</label>
+      <select id="transmission" name="transmission">
+        <option value="Manual">Manual</option>
+        <option value="Automated">Automated</option></select
+      ><br />
+
+      <label for="year">Year of purchase:</label>
+      <select id="year" name="year">
+        <option value="2022">2022</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
+        <option value="2019">2019</option></select
+      ><br />
+
+      <label for="km">KM driven:</label>
+      <input type="text" id="km" name="km" /><br />
+
+      <label for="description">Description:</label><br />
+      <textarea
+        id="description"
+        name="description"
+        rows="4"
+        cols="50"
+      ></textarea
+      ><br />
+
+      <label for="price">Price:</label>
+      <input type="text" id="price" name="price" /><br />
+
+      <input type="submit" value="Post" />
+    </form>
+  </body>
+  <script type="module" src="/script/ad.js"></script>
+</html>
