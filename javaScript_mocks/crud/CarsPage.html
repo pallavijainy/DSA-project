@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/car.css" />
+  </head>
+  <body>
+    <div class="navbar"></div>
+    <div id="all">
+      <div class="sortPrice">
+        <p>sort by price</p>
+        <select name="" id="sortPrice">
+          <option value="asc">ascprice</option>
+          <option value="desc">descprice</option>
+        </select>
+      </div>
+      <div class="sortKm">
+        <p>sort by km</p>
+        <select name="" id="sortkm">
+          <option value="asc">asckm</option>
+          <option value="desc">desckm</option>
+        </select>
+      </div>
+      <div class="filter">
+        <input type="text" placeholder="filter by brand" />
+        <button>filter</button>
+      </div>
+    </div>
+
+    <div class="container"></div>
+  </body>
+</html>
+<script src="./scripts/Car.js" type="module"></script>

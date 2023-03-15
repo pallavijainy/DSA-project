@@ -1,0 +1,68 @@
+.navbar {
+  background-color: aqua;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+}
+.navbar div:nth-child(2) {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.navbar a {
+  color: black;
+  font-size: 2rem;
+  text-decoration: none;
+}
+.navbar img {
+  display: none;
+}
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 16px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.card {
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  background-color: antiquewhite;
+  margin: 16px;
+  padding: 16px;
+  width: 300px;
+  justify-content: center;
+  text-align: center;
+}
+#all {
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem;
+  background-color: rgb(236, 245, 188);
+}
+@media all and (min-width: 481px) and (max-width: 768px) {
+  .navbar img {
+    display: block;
+    width: 3rem;
+  }
+  .navbar :nth-child(2) a {
+    display: none;
+  }
+}
+
+@media all and (min-width: 320px) and (max-width: 480px) {
+  .navbar img {
+    display: block;
+    width: 3rem;
+  }
+  .navbar :nth-child(2) a {
+    display: none;
+  }
+}
