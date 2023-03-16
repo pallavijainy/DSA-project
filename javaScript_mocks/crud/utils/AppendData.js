@@ -1,3 +1,9 @@
+import { Delete } from "./Delete.js";
+import { AddtoWish } from "./AddData.js";
+import showEditModal from "./EditData.js";
+
+
+
 const AppendData = (res) => {
   const container = document.querySelector(".container");
   container.innerHTML = "";
@@ -27,11 +33,37 @@ const AppendData = (res) => {
     const price = document.createElement("p");
     price.innerText = `price:- ${el.price}`;
 
-    carts.append(image, brand, type, year, km, description, price);
-
-    container.append(carts)
+    const btndiv = document.createElement("div");
+    btndiv.className = "btndiv";
+    const edit = document.createElement("button");
+    edit.innerText = "EDIT";
+    edit.classList.add("edit");
+    edit.onclick=()=>{
+      showEditModal(el)
+    }
+    const deletebtn = document.createElement("button");
+    deletebtn.innerText = "Delete";
+    deletebtn.classList.add("delete");
+    //delete pr onclick
+    deletebtn.onclick =()=>{
+      Delete(el.id)
+    }
     
+    const wishlist = document.createElement("button");
+    wishlist.innerText = "❤️";
+    
+    // wishlist.classList.add("fa-solid" ,"fa-heart");
+    wishlist.classList.add("wishlist");
+    wishlist.onclick=()=>{
+      AddtoWish(el)
+    }
+    btndiv.append(edit, deletebtn, wishlist);
+    carts.append(image, brand, type, year, km, description, price, btndiv);
+
+    container.append(carts);
   });
 };
 
 export default AppendData;
+
+

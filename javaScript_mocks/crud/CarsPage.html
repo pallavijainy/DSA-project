@@ -6,9 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./style/car.css" />
+    <!-- <script
+      src="https://kit.fontawesome.com/ae4e9ee454.js"
+      crossorigin="anonymous"
+    ></script> -->
   </head>
   <body>
     <div class="navbar"></div>
+    <h1 id="loader">LOADING.................</h1>
     <div id="all">
       <div class="sortPrice">
         <p>sort by price</p>
@@ -25,8 +30,13 @@
         </select>
       </div>
       <div class="filter">
-        <input type="text" placeholder="filter by brand" />
-        <button>filter</button>
+        <select name="" id="filter">
+          <option value="">all</option>
+          <option value="tata">tata</option>
+          <option value="hondo">hondo</option>
+          <option value="renauld">renauld</option>
+          <option value="bmw">bmw</option>
+        </select>
       </div>
     </div>
 
