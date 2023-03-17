@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Masai car</title>
+    <link rel="stylesheet" href="./style/index.css" />
+  </head>
+  <body>
+    <div class="navbar"></div>
+    <form>
+      <h1>Post Form</h1>
+      <label for="brand">BRAND OF A CAR</label>
+      <select name="" id="brand">
+        <option value="tata">tata</option>
+        <option value="hondo">hondo</option>
+        <option value="renauld">renauld</option>
+        <option value="bmw">bmw</option>
+      </select>
+      <label for="manual">Manual or Automated</label>
+      <select name="" id="manual">
+        <option value="manual">manual</option>
+        <option value="automated">automated</option>
+      </select>
+      <label for="year">year of purchase</label>
+      <select name="" id="year">
+        <option value="2000">2000</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+      </select>
+      <div id="km">
+        <label for="30">30km</label>
+        <input type="radio" value="30" name="km" />
+      </div>
+      <div id="km">
+        <label for="40">40km</label>
+        <input type="radio" value="40" name="km" />
+      </div>
+
+      <label for="des">Description</label>
+      <textarea name="" id="description" cols="20" rows="5"></textarea>
+      <label for="price">price</label>
+      <input type="number" placeholder="price" id="price" /><br />
+      <input type="submit" id="submit" />
+    </form>
+  </body>
+</html>
+
+<script src="./scripts/index.js" type="module"></script>
