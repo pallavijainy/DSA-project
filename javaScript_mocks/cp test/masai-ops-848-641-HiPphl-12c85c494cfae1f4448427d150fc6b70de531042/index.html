@@ -7,9 +7,150 @@
     <title>Home Page</title>
     <style>
       /* All Your css for Home page goes here  */
+
+      /* Fonts */
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
+
+      /* Body */
+      body {
+        font-family: "Montserrat", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f1f1f1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* Nav */
+      .nav {
+        display: flex;
+        /* justify-content: space-between; */
+        flex-wrap: wrap;
+        align-items: center;
+        width: 100%;
+        padding: 1rem;
+        background-color: #222;
+        color: #fff;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 999;
+      }
+
+      .nav a {
+        color: #fff;
+        text-decoration: none;
+        margin-left: 2rem;
+        font-size: 1.2rem;
+      }
+
+      .nav h1 {
+        margin: 0;
+        font-size: 2rem;
+      }
+
+      /* Filter */
+      #filter {
+        margin-top: 6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #filter input[type="number"] {
+        width: 10rem;
+        padding: 0.5rem;
+        border: none;
+        border-radius: 5px;
+        margin-right: 1rem;
+        font-size: 1.2rem;
+        text-align: center;
+      }
+
+      #filter button {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 5px;
+        background-color: #222;
+        color: #fff;
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+
+      /* Sort */
+      #sort {
+        margin-top: 1rem;
+        padding: 0.5rem;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+
+      #sort option {
+        font-size: 1.2rem;
+      }
+
+      /* Alert */
+      #alert {
+        margin-top: 1rem;
+        color: #222;
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+
+      /* Menu */
       #menu-container {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1rem;
+        margin-top: 4rem;
+      }
+
+      .c {
+        background-color: #fff;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .c p {
+        font-size: 1.2rem;
+        margin-top: 1rem;
+        margin-bottom: 0;
+      }
+      .imgdiv {
+        justify-content: center;
+        margin-left: 2rem;
+        /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px; */
+        border-radius: 1rem;
+      }
+      #pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      #pagination button {
+        background-color: #4caf50;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 5px;
+        cursor: pointer;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      #pagination button:hover {
+        background-color: #3e8e41;
       }
     </style>
   </head>
@@ -34,10 +175,17 @@
     <div id="menu-container">
       <!-- Here Append All the Items  -->
     </div>
+    <div id="pagination">
+      <button id="pre">Previous</button>
+      <button id="nxt">Next</button>
+    </div>
   </body>
   <script>
+    let page = 1;
+    let sorting = "asc";
+
     // All your JS code for Home Page goes here
-    const url = `https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-coffee`;
+    const url = `https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-coffee?page=${page}&limit=5`;
 
     //data
     fetch(url)
@@ -48,33 +196,40 @@
       .catch((err) => console.log(err));
     //filter
 
-    const btnfilter = document.querySelector("#filter-btn");
-    btnfilter.addEventListener("click", mybtn);
+    // pagination
 
-    function mybtn(e) {
-      e.preventDefault();
-      const inpone = document.querySelector("#lower").value;
-      const inptwo = document.querySelector("#upper").value;
+    let nxt = document.getElementById("nxt");
+    nxt.addEventListener("click", () => {
+      page++;
+      console.log(page);
 
       fetch(
-        `https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-coffee?price=${inpone}&price`
+        `https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-coffee?sort=price&order=${sorting}&page=${page}&limit=5`
       )
         .then((res) => res.json())
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
-    }
+        .then((res) => {
+          display(res.data);
+          console.log(res.data);
 
+          if (res.data == []) {
+            nxt.disabled = true; // disable the "nxt" button
+          }
+        })
+        .catch((err) => console.log(err));
+    });
     //sorting
 
     function sort() {
       const sorting = document.querySelector("#sort").value;
 
       fetch(
-        `https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-coffee?sort=price&order=${sorting}`
+        `https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-coffee?sort=price&order=${sorting}&page=${page}&limit=5`
       )
         .then((res) => res.json())
         .then((res) => {
           display(res.data);
+          console.log(res.data);
+          // console.log(page);
         })
         .catch((err) => console.log(err));
     }
@@ -85,15 +240,18 @@
       arr.forEach((el) => {
         const div = document.querySelector("#menu-container");
         const imgdiv = document.createElement("div");
+        imgdiv.className = "imgdiv";
         const content = document.createElement("div");
         const all = document.createElement("div");
+        all.className = "c";
 
         const title = document.createElement("h4");
         title.innerText = el.title;
         const image = document.createElement("img");
         image.src = el.image;
-        image.style.width = "50px";
-        const des = document.createElement("h4");
+        image.style.width = "200px";
+        image.style.height = "200px";
+        const des = document.createElement("p");
         des.innerText = el.description;
         const price = document.createElement("h4");
         price.innerText = el.price;
