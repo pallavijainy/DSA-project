@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart Page</title>
+  </head>
+  <body>
+    <div class="nav">
+      <a href="./index.html">Home</a>
+      <a href="./cart.html">Cart</a>
+      <a href="./payment.html">Payment</a>
+    </div>
+    <div>
+      <h1>Your Total cart Price is:- <span id="cart-total">0</span></h1>
+      <input type="text" id="cupon-filled" placeholder="masai30" />
+      <button id="cupon-active">Submit</button>
+    </div>
+    <div id="cart-container">
+      <!-- Here Append All the cart Products  -->
+    </div>
+  </body>
+  <script>
+    let couponValid = false;
+    document.getElementById('cupon-active').addEventListener('click', ()=>{
+      let couponCode = document.getElementById('cupon-filled').value;
+      if(couponCode==='masai30'){
+        couponValid = true
+      }else{
+        couponValid=false;
+      }
+      totalPriceHandler();
+    })
+    let cartData = JSON.parse(localStorage.getItem('cart')) || [];
+    cartData.forEach((i)=>{
+      i.quantity = 1;
+    })
+
+    let container = document.getElementById('cart-container');
+
+    let totalPriceHandler = () => {
+      let totalSpan = document.getElementById('cart-total');
+      let total = 0;
+
+      cartData.forEach((i)=>{
+      total+=(i.quantity*i.price)
+      })
+
+      if(couponValid){
+        total = total - Math.floor(total*0.3);
+      }
+      totalSpan.textContent = total;
+    }
+
+    let incQuantity = (id) => {
+      cartData[id].quantity +=1
+    }
+
+    let decQuantity = (id) => {
+      cartData[id].quantity -=1
+    }
+
+    let display = () => {
+      container.innerHTML = '';
+      for(let i=0; i<cartData.length; i++){
+        let div=document.createElement('div');
+
+        let h3 = document.createElement('h3');
+        h3.textContent = cartData[i].name;
+
+        let price = document.createElement('p');
+        price.textContent = cartData[i].price;
+
+        let strikedoffprice = document.createElement('p');
+        strikedoffprice.textContent = cartData[i].strikedoffprice;
+
+        let inc = document.createElement('button');
+        inc.textContent='+';
+        inc.addEventListener('click', ()=>{
+          incQuantity(i);
+          display();
+        })
+
+        let dec = document.createElement('button');
+        dec.textContent='-';
+        dec.addEventListener('click', ()=>{
+          decQuantity(i);
+          display();
+        })
+
+        let quantity = document.createElement('span');
+        quantity.textContent = cartData[i].quantity;
+
+        div.append(h3, price, strikedoffprice, inc, quantity, dec);
+        container.append(div);
+      }
+      totalPriceHandler();
+    }
+    display();
+
+
+    
+  </script>
+</html>
+
+<!-- 
+  <div>
+ <h3>name</h3>
+ <p>Price</p>
+ <p>Strikedoffprice</p>
+ <button>+</button> -> increment button
+ <span>quantity</span>
+<button>-</button> -> decrement button
+</div>
+ -->
