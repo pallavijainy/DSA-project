@@ -1,0 +1,35 @@
+{
+  "users": [
+    {
+      "username": "pallavi",
+      "avatar": "sdfsdf",
+      "email": "pallavijainy0612@gmail.com",
+      "password": "pallavi",
+      "id": 1
+    },
+    {
+      "username": "pal",
+      "avatar": "pal",
+      "email": "pal",
+      "password": "pal",
+      "id": 2
+    },
+    {
+      "username": "",
+      "avatar": "",
+      "email": "",
+      "password": "",
+      "id": 3
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
