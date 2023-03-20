@@ -22,11 +22,32 @@
       "id": 3
     }
   ],
-  "comments": [
+  "blogs": [
     {
       "id": 1,
       "body": "some comment",
       "postId": 1
+    },
+    {
+      "username": "sdfd",
+      "content": "sdf",
+      "category": "lifestyle",
+      "date": "2023-03-01",
+      "id": 2
+    },
+    {
+      "username": "pal",
+      "content": "",
+      "category": "business",
+      "date": "",
+      "id": 3
+    },
+    {
+      "username": "pal",
+      "content": "pal",
+      "category": "lifestyle",
+      "date": "2023-04-06",
+      "id": 4
     }
   ],
   "profile": {

@@ -27,6 +27,7 @@ function myForm(e) {
     if(user){
      
      localStorage.setItem("login",true)
+     localStorage.setItem("user",user.username)
         alert("login success")
         window.location.href = "/BlogPage.html"
     

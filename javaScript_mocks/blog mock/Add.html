@@ -9,6 +9,21 @@
   </head>
   <body>
     <div class="navbar"></div>
+
+    <form>
+      <input type="text" id="username" readonly="readonly" />
+      <input type="text" placeholder="title" id="title" />
+      <input type="textarea" placeholder="content" id="content" />
+      <select id="category">
+        <option value="business">business</option>
+        <option value="lifestyle">lifestyle</option>
+        <option value="tech">tech</option>
+      </select>
+
+      <input type="date" id="date" />
+      <button id="post">POST</button>
+    </form>
+
     <script src="./script/add.js" type="module"></script>
   </body>
 </html>
