@@ -1,0 +1,105 @@
+# PokéDex
+
+# `**Instructions**`
+
+- Read the entire question carefully for at least 15 mins, understand it and then code it.
+- Don’t jump directly into the code.
+- Commit your code every hour with a proper commit message to your repository (we will monitor every commit)
+- Use React to solve this question.
+
+---
+
+# `**Problem Statement**`
+
+- The task is to implement a React web application where you can access the details of different Pokémon from a list of Pokémon.
+- Refer to this API documentation - [https://pokeapi.co/docs/v2](https://pokeapi.co/docs/v2)
+- Your app should have a navigation bar with three pages, make suitable routes
+    - Pokemon Page (/pokemon)
+    - Types Page (/types)
+    - Favorites Page (/favorites)
+    
+
+---
+
+## **`Pokemon Route (/pokemon)`**
+
+- On page load, display the names of all Pokémon in the form of cards.
+- Use this API
+
+```
+https://pokeapi.co/api/v2/pokemon
+```
+
+![                                                                           Reference Image - 1](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/08222ba5-5134-4fa3-b433-2bfb08c4f912/Reference-1.png)
+
+                                                                           Reference Image - 1
+
+- **Pagination** should be implemented with only 20 Pokémon per page.
+- On clicking on any of the Pokémon, more details about that particular Pokémon should be shown in the route **`/pokemon/<pokemon_name>`**
+- The details route should contain the following data for each Pokémon
+    - Name
+    - Image
+    - ID
+    - Base Experience
+    - HP
+    - Attack Score
+    - Defense Score
+    - Special-Attack Score
+    - Special-Defence Score
+    - Speed
+    - Abilities (There may be multiple abilities, display all)
+    - Moves (There will be multiple moves, display all)
+    - Weight
+    - Height
+
+![                                                                        Reference Image - 2](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cd900d82-00aa-4d7e-9bf4-cda23a817c19/Reference-2.png)
+
+                                                                        Reference Image - 2
+
+### **`Features`**
+
+- In the details route, there should be a **favorite icon**, and when clicked that particular Pokémon should be added to our favorites (**use localStorage**).
+- There should be a **search** bar at the top of the page where the user can search for any particular Pokémon and all details of that particular Pokémon should be shown.
+
+---
+
+## **`Types Route (/types)`**
+
+- On page load, display all types of Pokémon in the form of cards. (See Reference Image-1).
+- Use this API
+    
+    ```
+    https://pokeapi.co/api/v2/type
+    ```
+    
+- On clicking on any of the types, all Pokémon of that particular type should be shown in the form of cards on route `**/types/<types_id>`.**
+- On clicking on any of the Pokémon from this list, all details of that Pokémon should be shown like the Reference Image-2.
+
+## **`Favorites Route (/favorites)`**
+
+- On this route, all the favorite Pokémon of the user should be shown.
+- On clicking on any of the Pokémon from this list, all details of that Pokémon should be shown like the Reference Image-2.
+- The user should also be able to **remove Pokémon from the favorites**.
+
+![                                                                         Reference Image - 3](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/067321be-0b05-4f3d-9806-705d99af3c2a/Reference-3.png)
+
+                                                                         Reference Image - 3
+
+## Submission
+
+- Please submit deployed link and Github link of code.
+- Push your code into masai-repo, don’t submit personal repo links.
+- Please double check if deployed version works or not (run deployed version on your laptop and then submit it)
+- Any issues in deployed link, will be considered null and void.
+- Please verify your submissions are correct.
+- Make sure you follow all instructions carefully.
+- Submit before deadline.
+
+### Rubrics / Criteria to be judged upon
+
+- HTML, CSS, React
+- React router
+- API Requests
+- Filter, Search, Pagination
+- UI (bonus marks will be given for decent UI)
+- Code cleanliness
