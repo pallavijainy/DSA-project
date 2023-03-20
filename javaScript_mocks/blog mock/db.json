@@ -20,34 +20,33 @@
       "email": "",
       "password": "",
       "id": 3
+    },
+    {
+      "username": "vinit",
+      "avatar": "https://lh3.googleusercontent.com/a/AGNmyxZvJkJQusz9zqpQJNmtHq0ehk4ws0jAJRSmQTW6=s288",
+      "email": "vinaymasai1998@gmail.com",
+      "password": "123",
+      "id": 4
     }
   ],
   "blogs": [
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    },
-    {
-      "username": "sdfd",
-      "content": "sdf",
-      "category": "lifestyle",
-      "date": "2023-03-01",
-      "id": 2
-    },
-    {
       "username": "pal",
-      "content": "",
+      "content": "vinit baba",
       "category": "business",
-      "date": "",
-      "id": 3
+      "date": "2023-03-23",
+      "comments": [],
+      "likes": 6,
+      "id": 1
     },
     {
-      "username": "pal",
-      "content": "pal",
-      "category": "lifestyle",
-      "date": "2023-04-06",
-      "id": 4
+      "username": "vinit",
+      "content": "Developer community scared with AI  Are you agree with me",
+      "category": "tech",
+      "date": "2023-03-22",
+      "comments": [],
+      "likes": 7,
+      "id": 2
     }
   ],
   "profile": {

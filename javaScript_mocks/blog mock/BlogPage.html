@@ -10,6 +10,28 @@
   <body>
     <div class="navbar"></div>
     <h1>blogpage</h1>
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Search..." />
+      <button id="search-btn">Search</button>
+    </div>
+    <div class="filter-container">
+      <label for="category-select">Filter by Category:</label>
+      <select id="category-select">
+        <option value="">All</option>
+        <option value="Business">Business</option>
+        <option value="Tech">Tech</option>
+        <option value="Lifestyle">Lifestyle</option>
+        <option value="Entertainment">Entertainment</option>
+      </select>
+
+      <label for="sort-select">Sort by Date:</label>
+      <select id="sort-select">
+        <option value="desc">Newest First</option>
+        <option value="asc">Oldest First</option>
+      </select>
+    </div>
+
+    <div id="container"></div>
   </body>
   <script src="./script/Blog.js" type="module"></script>
 </html>
