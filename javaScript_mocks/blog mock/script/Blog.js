@@ -6,6 +6,9 @@ document.querySelector(".navbar").innerHTML = Navbar();
 PrivateRoute();
 let container = document.getElementById("container");
 let local = localStorage.getItem("user");
+let order = "desc";
+let filter = "";
+let src = "";
 
 function AppendData(el) {
   container.innerHTML = "";
@@ -129,18 +132,63 @@ function showDeleteConfirmation(id) {
     })
       .then((res) => res.json())
       .then((data) => {
-        display();
+        display(order, filter, src);
       });
   }
 }
+let sorting = document.getElementById("sort-select");
+sorting.onchange = () => {
+  let value = sorting.value;
+  if (value.length > 0) {
+    order = value;
+    display(order, filter, src);
+  }
+};
+let filtering = document.getElementById("category-select");
+filtering.onchange = () => {
+  let valur = filtering.value;
+  if (valur.length > 0) {
+    filter = valur;
+    display(order, filter, src);
+  } else {
+    order = "";
+    filter = "";
+    src = "";
+    display(order, filter, src);
+  }
+};
+let serch = document.getElementById("search-input");
+let btn = document.getElementById("search-btn");
+btn.onclick = () => {
+  // container.innerHTML = "";
+  let valus = serch.value;
+  console.log(valus);
+  if (valus.length > 0) {
+    src = valus;
+    console.log(src);
+    display(order, filter, src);
+  } else {
+    order = "";
+    filter = "";
+    src = "";
+    display(order, filter, src);
+  }
+};
+function display(order, filter, src) {
+  console.log(src);
 
-function display() {
-  fetch("http://localhost:8000/blogs")
+  let url = `http://localhost:8000/blogs?_sort=date&_order=${order}`;
+  if (filter != "") {
+    url += `&category=${filter}`;
+  }
+  if (src != "") {
+    url += `&username=${src}`;
+  }
+  fetch(url)
     .then((response) => response.json())
     .then((data) => {
       //   console.log(data);
       AppendData(data);
-      searchButton.addEventListener("click", () => filterByTitle(data));
     });
 }
-display();
+display(order, filter, src);

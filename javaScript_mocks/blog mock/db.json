@@ -27,6 +27,20 @@
       "email": "vinaymasai1998@gmail.com",
       "password": "123",
       "id": 4
+    },
+    {
+      "username": "akash",
+      "avatar": "https://lh3.googleusercontent.com/a/AGNmyxZvJkJQusz9zqpQJNmtHq0ehk4ws0jAJRSmQTW6=s288",
+      "email": "vinaymasai1998@gmail.com",
+      "password": "123",
+      "id": 5
+    },
+    {
+      "username": "akash",
+      "avatar": "https://lh3.googleusercontent.com/a/AGNmyxZvJkJQusz9zqpQJNmtHq0ehk4ws0jAJRSmQTW6=s288",
+      "email": "ak@g",
+      "password": "123",
+      "id": 6
     }
   ],
   "blogs": [
@@ -41,12 +55,39 @@
     },
     {
       "username": "vinit",
-      "content": "Developer community scared with AI  Are you agree with me",
+      "content": "Developer community scared with AI  Are you agree with me yes dfvsfs sdsavdsvsdvsdavcasdvasdvasvas",
       "category": "tech",
       "date": "2023-03-22",
       "comments": [],
       "likes": 7,
       "id": 2
+    },
+    {
+      "username": "vinit",
+      "content": "sdvdsv",
+      "category": "lifestyle",
+      "date": "2023-03-30",
+      "comments": [],
+      "likes": 0,
+      "id": 3
+    },
+    {
+      "username": "vinit",
+      "content": "",
+      "category": "business",
+      "date": "",
+      "comments": [],
+      "likes": 0,
+      "id": 4
+    },
+    {
+      "username": "akash",
+      "content": "svdcdsvdsvdsadsvfdsvfa",
+      "category": "tech",
+      "date": "2023-03-30",
+      "comments": [],
+      "likes": 26,
+      "id": 5
     }
   ],
   "profile": {
