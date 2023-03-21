@@ -6,9 +6,10 @@ document.querySelector(".navbar").innerHTML = Navbar();
 PrivateRoute();
 let container = document.getElementById("container");
 let local = localStorage.getItem("user");
-let order = "desc";
+let order = "asc";
 let filter = "";
 let src = "";
+let page = 1;
 
 function AppendData(el) {
   container.innerHTML = "";
@@ -132,7 +133,7 @@ function showDeleteConfirmation(id) {
     })
       .then((res) => res.json())
       .then((data) => {
-        display(order, filter, src);
+        display(order, filter, src, page);
       });
   }
 }
@@ -141,7 +142,7 @@ sorting.onchange = () => {
   let value = sorting.value;
   if (value.length > 0) {
     order = value;
-    display(order, filter, src);
+    display(order, filter, src, page);
   }
 };
 let filtering = document.getElementById("category-select");
@@ -149,12 +150,12 @@ filtering.onchange = () => {
   let valur = filtering.value;
   if (valur.length > 0) {
     filter = valur;
-    display(order, filter, src);
+    display(order, filter, src, page);
   } else {
     order = "";
     filter = "";
     src = "";
-    display(order, filter, src);
+    display(order, filter, src, page);
   }
 };
 let serch = document.getElementById("search-input");
@@ -166,18 +167,33 @@ btn.onclick = () => {
   if (valus.length > 0) {
     src = valus;
     console.log(src);
-    display(order, filter, src);
+    display(order, filter, src, page);
   } else {
     order = "";
     filter = "";
     src = "";
-    display(order, filter, src);
+    display(order, filter, src, page);
   }
 };
-function display(order, filter, src) {
-  console.log(src);
+let nxt = document.getElementById("nxt");
+nxt.onclick = () => {
+  console.log(page);
 
-  let url = `http://localhost:8000/blogs?_sort=date&_order=${order}`;
+  page++;
+  display(order, filter, src, page);
+};
+let pre = document.getElementById("pre");
+pre.onclick = () => {
+  console.log(page);
+  if (page > 1) {
+    page--;
+    display(order, filter, src, page);
+  }
+};
+function display(order, filter, src, page) {
+  console.log(page);
+
+  let url = `http://localhost:8000/blogs?_sort=date&_order=${order}&_page=${page}&_limit=1`;
   if (filter != "") {
     url += `&category=${filter}`;
   }
@@ -191,4 +207,4 @@ function display(order, filter, src) {
       AppendData(data);
     });
 }
-display(order, filter, src);
+display(order, filter, src, page);
