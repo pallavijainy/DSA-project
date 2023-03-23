@@ -12,13 +12,13 @@ import {
   LOGOUT,
 } from "./ActionType";
 
-const token = localStorage.getItem("token");
+
 let initialState = {
   data: [],
   loading: false,
   error: false,
-  isAuth: !!token,
-  token: null,
+  isAuth: false,
+  token: "",
 };
 
 export const Reducer = (state = initialState, { type, payload }) => {
@@ -75,7 +75,7 @@ export const Reducer = (state = initialState, { type, payload }) => {
     }
 
     case LOGIN:{
-        localStorage.setItem("token", payload.data.token)
+        
         return{
             ...state,
             loading: false,
@@ -112,15 +112,7 @@ export const Reducer = (state = initialState, { type, payload }) => {
             token:""
         }
     }
-    case Delete:{
-      const remfun=state.data.filter((el)=> el.id !== payload.id)
-      return {
-          ...state,
-          loading:false,
-          error:false,
-          data:remfun
-      }
-  }
+    
 
 
     default: {

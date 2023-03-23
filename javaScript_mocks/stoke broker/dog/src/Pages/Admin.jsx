@@ -7,7 +7,7 @@ import { login_success } from '../Redux/Action';
 
 const Admin = () => {
   
-  const {AuthLoading} = useSelector((store)=>store)
+  const {token} = useSelector((store)=>store)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   
@@ -15,8 +15,10 @@ const Admin = () => {
   const toast = useToast()
  
   const handleClick = () => {
+
     let obj ={email,password}
     dispatch(login_success(obj))
+   if(token.length>0){
     toast({
       title: 'Account created.',
       description: "We've created your account for you.",
@@ -24,6 +26,17 @@ const Admin = () => {
       duration: 9000,
       isClosable: true,
     })
+   }else{
+    toast({
+      title: 'error.',
+      description: "We've created your account for you.",
+      status: 'error',
+      duration: 9000,
+      isClosable: true,
+    })
+   }
+
+    
     
     
   }

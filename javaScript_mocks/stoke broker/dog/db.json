@@ -1,5 +1,20 @@
 {
-  "posts": [],
+  "posts": [
+    {
+      "id": 1,
+      "name": "Cherry",
+      "age": 10,
+      "place": "Visakhapatnam",
+      "gender": "Male"
+    },
+    {
+      "id": 2,
+      "name": "Tommy",
+      "age": 10,
+      "place": "Banglore",
+      "gender": "Female"
+    }
+  ],
   "comments": [],
   "profile": {
     "name": "typicode"

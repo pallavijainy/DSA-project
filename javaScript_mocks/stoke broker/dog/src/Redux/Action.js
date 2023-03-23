@@ -38,9 +38,19 @@ export const logout_success=()=>({type:LOGOUT})
 export const deleteFun =(id)=>async(dispatch)=>{
 try {
     let res = await axios.delete(`http://localhost:8080/posts/${id}`)
-    dispatch({type:Delete,payload:res.data})
+    dispatch(getData())
 } catch (error) {
     console.log(error)
     
 }
+}
+
+export const updateData =({id,data})=>async(dispatch)=>{
+    dispatch({type:LoadingADD})
+    try {
+        let res = await axios.patch(`http://localhost:8080/posts/${id}`,data)
+        dispatch(getData())
+    } catch (error) {
+        dispatch({type:ErrorADD})
+    }
 }

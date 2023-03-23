@@ -1,7 +1,7 @@
 import { Button, Card, CardBody, Heading } from '@chakra-ui/react';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteFun, getData } from './../Redux/Action';
+import { deleteFun, getData, updateData } from './../Redux/Action';
 
 const Data = () => {
 
@@ -26,14 +26,14 @@ if(error){
     <div>
       {
         data.map((el)=>(
-          <Card key={el.id}>
-  <CardBody >
+          <Card>
+  <CardBody  key={el.id}>
    <Heading>{el.name}</Heading>
    <Heading>{el.age}</Heading>
    <Heading>{el.place}</Heading>
    <Heading>{el.gender}</Heading>
    <Button onClick={()=>dispatch(deleteFun(el.id))}>Delete</Button>
-   <Button>Edit</Button>
+   <Button onClick={()=>dispatch(updateData({id:el.id,data:{age:10}}))}>Edit</Button>
   </CardBody>
 </Card>
         ))
