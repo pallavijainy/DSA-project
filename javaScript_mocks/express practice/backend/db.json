@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "image": "https://www.famousfootwear.com/blob/product-images/20000/31/04/1/31041_pair_medium.jpg",
+    "brand": "vans"
+  },
+  {
+    "id": 2,
+    "image": "https://www.famousfootwear.com/blob/product-images/20000/51/64/6/51646_pair_medium.jpg",
+    "brand": "nike"
+  },
+  {
+    "image": "https://www.famousfootwear.com/blob/product-images/20000/31/04/1/31041_pair_medium.jpg",
+    "brand": "vans"
+  }
+]
